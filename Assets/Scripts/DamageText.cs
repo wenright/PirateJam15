@@ -8,16 +8,15 @@ public class DamageText : MonoBehaviour
     [ReadOnly] public float damage;
     [ReadOnly] public Damageable damagee;
     [ReadOnly] public Damageable.DamageType damageType;
-    public TextMeshPro inMaskText;
-    public TextMeshPro outMaskText;
+    public TextMeshPro text;
 
     private readonly Dictionary<Damageable.DamageType, Color> damageTypeToColor = new()
     {
-        { Damageable.DamageType.DEFAULT, new Color(0, 0, 0) },
-        { Damageable.DamageType.CRIT, new Color(218.0f/255, 65.0f/255, 103.0f/255) },
-        { Damageable.DamageType.FIRE, new Color(255.0f/255, 65.0f/255, 103.0f/255) },
-        { Damageable.DamageType.POISON, new Color(97.0f/255, 231.0f/255, 134.0f/255) },
-        { Damageable.DamageType.ICE, new Color(32.0f/255, 164.0f/255, 243.0f/255) },
+        { Damageable.DamageType.DEFAULT, new Color(122/255.0f, 122/255.0f, 122/255.0f) },
+        { Damageable.DamageType.CRIT, new Color(218/255.0f, 65/255.0f, 103/255.0f) },
+        { Damageable.DamageType.FIRE, new Color(255/255.0f, 65/255.0f, 103/255.0f) },
+        { Damageable.DamageType.POISON, new Color(97/255.0f, 231/255.0f, 134/255.0f) },
+        { Damageable.DamageType.ICE, new Color(32/255.0f, 164/255.0f, 243/255.0f) },
     };
 
     private float startHeight = 0.5f;
@@ -59,19 +58,17 @@ public class DamageText : MonoBehaviour
             damageText = Mathf.RoundToInt(damage).ToString();
         }
 
-        inMaskText.text = damageText;
-        outMaskText.text = damageText;
+        text.text = damageText;
 
         if (damageTypeToColor.TryGetValue(damageType, out var value))
         {
-            inMaskText.color = value;
+            text.color = value;
         }
 
         // DOT damage should have a smaller font size
         if (damageType != Damageable.DamageType.DEFAULT)
         {
-            inMaskText.fontSize = dotFontSize;
-            outMaskText.fontSize = dotFontSize;
+            text.fontSize = dotFontSize;
         }
 
         Vector3 endPos = startPos + new Vector3(0, endHeight + (variance * Random.Range(-0.5f, 0.5f)), 0);
