@@ -355,6 +355,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wizard (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6972972845598449257, guid: fcf5e10d3caf04a68ba9ae739b9f3a9f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8185231158308803512, guid: fcf5e10d3caf04a68ba9ae739b9f3a9f, type: 3}
       propertyPath: spellData
       value: 
@@ -552,6 +556,10 @@ PrefabInstance:
     - target: {fileID: 6972972845598449257, guid: fcf5e10d3caf04a68ba9ae739b9f3a9f, type: 3}
       propertyPath: m_Name
       value: Wizard (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6972972845598449257, guid: fcf5e10d3caf04a68ba9ae739b9f3a9f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8185231158308803512, guid: fcf5e10d3caf04a68ba9ae739b9f3a9f, type: 3}
       propertyPath: spellData

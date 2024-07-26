@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Wizard : MonoBehaviour
 {
-    private Monster target;
     private Searchlight searchlight;
     
     [ReadOnly] public float lastFireTime = 0.0f;
@@ -15,30 +14,24 @@ public class Wizard : MonoBehaviour
 
     private void Update()
     {
-        if (target)
+        if (lastFireTime + spellData.attackCooldown < Time.time)
         {
-            if (!searchlight.IsTargetVisible(target))
-            {
-                target = null;
-                return;
-            }
-            
-            if (lastFireTime + spellData.attackCooldown < Time.time)
-            {
-                Fire();
-            }
-        }
-        else
-        {
-            target = searchlight.GetRandomTarget();
+            Fire();
         }
     }
 
     public void Fire()
     {
+        Monster targetMonster = searchlight.GetNearestTarget();
+
+        if (targetMonster == null)
+        {
+            return;
+        }
+        
         lastFireTime = Time.time;
 
-        float angle = Utils.AngleToPoint(transform.position, target.transform.position);
+        float angle = Utils.AngleToPoint(transform.position, targetMonster.transform.position);
         GameObject projectileInstance = Instantiate(spellData.projectilePrefab, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
         projectileInstance.GetComponent<Projectile>().SetData(spellData, gameObject);
         

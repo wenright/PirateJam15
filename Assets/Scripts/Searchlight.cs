@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Searchlight : MonoBehaviour
@@ -34,11 +35,11 @@ public class Searchlight : MonoBehaviour
     }
 
     // TODO maybe should get closest first
-    public Monster GetRandomTarget()
+    public Monster GetNearestTarget()
     {
         if (visibleMonsters == null || visibleMonsters.Count == 0) return null;
         
-        return visibleMonsters[Random.Range(0, visibleMonsters.Count)];
+        return visibleMonsters.ToList().OrderBy(m => Vector3.Distance(transform.position, m.transform.position)).First();
     }
     
     public bool IsTargetVisible(Monster target)
