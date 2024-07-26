@@ -5,14 +5,15 @@ using DG.Tweening;
 
 public class DamageText : MonoBehaviour
 {
-    public float damage;
-    public uint damagerNetId;
-    public Damageable damagee;
-    public Damageable.DamageType damageType;
+    [ReadOnly] public float damage;
+    [ReadOnly] public Damageable damagee;
+    [ReadOnly] public Damageable.DamageType damageType;
+    public TextMeshPro inMaskText;
+    public TextMeshPro outMaskText;
 
     private Dictionary<Damageable.DamageType, Color> damageTypeToColor = new()
     {
-        { Damageable.DamageType.DEFAULT, new Color(1, 1, 1) },
+        { Damageable.DamageType.DEFAULT, new Color(0, 0, 0) },
         { Damageable.DamageType.CRIT, new Color(218.0f/255, 65.0f/255, 103.0f/255) },
         { Damageable.DamageType.POISON, new Color(97.0f/255, 231.0f/255, 134.0f/255) },
         { Damageable.DamageType.ICE, new Color(32.0f/255, 164.0f/255, 243.0f/255) },
@@ -26,10 +27,9 @@ public class DamageText : MonoBehaviour
     // private float minNeighborDistance = 1.0f;
     private Vector3 startPos;
 
-    public void SetDamage(float damage, uint damagerNetId, Damageable damagee, Damageable.DamageType damageType)
+    public void SetDamage(float damage, Damageable damagee, Damageable.DamageType damageType)
     {
         this.damage = damage;
-        this.damagerNetId = damagerNetId;
         this.damagee = damagee;
         this.damageType = damageType;
 
@@ -47,9 +47,6 @@ public class DamageText : MonoBehaviour
 
     private void UpdateText()
     {
-        TextMeshPro textMesh = GetComponent<TextMeshPro>();
-        TextMeshPro shadowTextMesh = transform.Find("Shadow").GetComponent<TextMeshPro>();
-
         string damageText;
         if (damage < 10)
         {
@@ -60,12 +57,12 @@ public class DamageText : MonoBehaviour
             damageText = Mathf.RoundToInt(damage).ToString();
         }
 
-        textMesh.text = damageText;
-        shadowTextMesh.text = damageText;
+        inMaskText.text = damageText;
+        outMaskText.text = damageText;
 
         if (damageTypeToColor.TryGetValue(damageType, out var value))
         {
-            textMesh.color = value;
+            inMaskText.color = value;
         }
 
         Vector3 endPos = startPos + new Vector3(0, endHeight + (variance * Random.Range(-0.5f, 0.5f)), 0);

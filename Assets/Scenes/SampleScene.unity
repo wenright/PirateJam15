@@ -219,6 +219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wizard (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8185231158308803512, guid: fcf5e10d3caf04a68ba9ae739b9f3a9f, type: 3}
+      propertyPath: spellData
+      value: 
+      objectReference: {fileID: 11400000, guid: eb8cbc97700094198a40fdf247151701, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -323,10 +327,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.0015625001
+    y: 0.44537038
+    width: 0.40833336
+    height: 0.6666666
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -438,6 +442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wizard (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8185231158308803512, guid: fcf5e10d3caf04a68ba9ae739b9f3a9f, type: 3}
+      propertyPath: spellData
+      value: 
+      objectReference: {fileID: 11400000, guid: eb8cbc97700094198a40fdf247151701, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -731,6 +739,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4741524138082129819, guid: d10834b1b84bd4d52ade8f8b827cb008, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5046264678633627078, guid: d10834b1b84bd4d52ade8f8b827cb008, type: 3}
       propertyPath: m_Name
       value: Monster
@@ -832,6 +844,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wizard
       objectReference: {fileID: 0}
+    - target: {fileID: 8185231158308803512, guid: fcf5e10d3caf04a68ba9ae739b9f3a9f, type: 3}
+      propertyPath: spellData
+      value: 
+      objectReference: {fileID: 11400000, guid: eb8cbc97700094198a40fdf247151701, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -842,9 +858,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 362022703}
   - {fileID: 1441379932}
   - {fileID: 264089261844803220}
   - {fileID: 2159849215405040801}
   - {fileID: 652951451}
   - {fileID: 376869154}
-  - {fileID: 362022703}
