@@ -11,10 +11,11 @@ public class DamageText : MonoBehaviour
     public TextMeshPro inMaskText;
     public TextMeshPro outMaskText;
 
-    private Dictionary<Damageable.DamageType, Color> damageTypeToColor = new()
+    private readonly Dictionary<Damageable.DamageType, Color> damageTypeToColor = new()
     {
         { Damageable.DamageType.DEFAULT, new Color(0, 0, 0) },
         { Damageable.DamageType.CRIT, new Color(218.0f/255, 65.0f/255, 103.0f/255) },
+        { Damageable.DamageType.FIRE, new Color(255.0f/255, 65.0f/255, 103.0f/255) },
         { Damageable.DamageType.POISON, new Color(97.0f/255, 231.0f/255, 134.0f/255) },
         { Damageable.DamageType.ICE, new Color(32.0f/255, 164.0f/255, 243.0f/255) },
     };
@@ -24,8 +25,8 @@ public class DamageText : MonoBehaviour
     private float angle = 5f;
     private float variance = 0.75f;
     private float duration = 0.75f;
-    // private float minNeighborDistance = 1.0f;
     private Vector3 startPos;
+    private float dotFontSize = 10;
 
     public void SetDamage(float damage, Damageable damagee, Damageable.DamageType damageType)
     {
@@ -47,6 +48,7 @@ public class DamageText : MonoBehaviour
 
     private void UpdateText()
     {
+        // Show tenths decimal place if < 10
         string damageText;
         if (damage < 10)
         {
@@ -63,6 +65,13 @@ public class DamageText : MonoBehaviour
         if (damageTypeToColor.TryGetValue(damageType, out var value))
         {
             inMaskText.color = value;
+        }
+
+        // DOT damage should have a smaller font size
+        if (damageType != Damageable.DamageType.DEFAULT)
+        {
+            inMaskText.fontSize = dotFontSize;
+            outMaskText.fontSize = dotFontSize;
         }
 
         Vector3 endPos = startPos + new Vector3(0, endHeight + (variance * Random.Range(-0.5f, 0.5f)), 0);

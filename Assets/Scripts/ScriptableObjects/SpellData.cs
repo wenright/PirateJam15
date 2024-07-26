@@ -43,6 +43,5 @@ public class SpellData : ScriptableObject
     [ShowIf("homing", true)] public float homingDistance = 3.0f;
     public bool piercing = false;
     
-    [AssetPath.Attribute(typeof(StatusEffectData))]
-    public List<string> onHitStatusEffects;
+    public List<StatusEffectData> onHitStatusEffects;
 }

@@ -40,6 +40,8 @@ public class Wizard : MonoBehaviour
 
         float angle = Utils.AngleToPoint(transform.position, target.transform.position);
         GameObject projectileInstance = Instantiate(spellData.projectilePrefab, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
-        projectileInstance.GetComponent<Projectile>().Init(10, spellData.damage, gameObject);
+        projectileInstance.GetComponent<Projectile>().SetData(spellData, gameObject);
+        
+        Utils.PlayOneShot(spellData.attackSound, transform.position);
     }
 }

@@ -27,7 +27,6 @@ public class Damageable : MonoBehaviour
 
     public void Damage(float damage, Vector2 position, GameObject source, DamageType damageType)
     {
-        Debug.Log(damage);
         health -= damage;
 
         if (health <= 0)
@@ -51,7 +50,7 @@ public class Damageable : MonoBehaviour
             if (existingDamageText == null
                 || !GameObject.ReferenceEquals(existingDamageText.damagee, this)
                 || existingDamageText.damagee != this
-                || existingDamageText.damageType != damageType) continue;
+                || existingDamageText.damageType != damageType) { continue; }
             
             existingDamageText.UpdateDamage(damage);
             return;

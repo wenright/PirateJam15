@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Shoot a lil fire
   weaponType: 0
   attackSound: {fileID: 8300000, guid: bc5450b2df2dc554a8b5a2b8dbeb38cb, type: 3}
-  damage: 12
+  damage: 2
   attackCooldown: 1
   knockback: 0
   projectilePrefab: {fileID: 5165195914837427055, guid: 166227ec6f5d643ddb277891d11364f8, type: 3}
@@ -24,7 +24,7 @@ MonoBehaviour:
   numProjectiles: 1
   multishotSpread: 10
   projectileSpread: 0
-  projectileSpeed: 20
+  projectileSpeed: 10
   projectileRotationSpeed: 0
   burst: 0
   burstAmount: 1
@@ -33,4 +33,5 @@ MonoBehaviour:
   homingStrength: 1
   homingDistance: 3
   piercing: 0
-  onHitStatusEffects: []
+  onHitStatusEffects:
+  - {fileID: 11400000, guid: c7f6b55abcf8d4968bf53821351040b9, type: 2}

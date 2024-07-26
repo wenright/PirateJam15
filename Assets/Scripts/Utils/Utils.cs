@@ -23,4 +23,26 @@ public class Utils : MonoBehaviour
         Vector3 direction = end - start;
         return Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
     }
+    
+    public static void PlayOneShot(AudioClip clip, Vector3 position)
+    {
+        if (clip == null)
+        {
+            Debug.LogError("Audio clip is null!");
+            return;
+        }
+
+        GameObject audioInstance = new()
+        {
+            name = "AudioInstance (" + clip.name + ")"
+        };
+        audioInstance.transform.position = position;
+        audioInstance.AddComponent<DestroyAfter>().waitTime = 0.5f;
+        AudioSource source = audioInstance.AddComponent<AudioSource>();
+        source.clip = clip;
+        source.volume = 0.2f;
+        source.pitch = Random.Range(0.9f, 1.1f);
+        source.spatialBlend = 1;
+        source.Play();
+    }
 }

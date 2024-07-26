@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public GameObject hitEffectPrefab;
+    [ReadOnly] public GameObject hitEffectPrefab;
+    [ReadOnly] public SpellData spellData;
 
     private GameObject source;
-    private float damage;
     private Rigidbody2D rb;
     
-    public void Init(float speed, float newDamage, GameObject source)
+    public void SetData(SpellData data, GameObject owner)
     {
+        spellData = data;
+        source = owner;
+        
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.right * speed;
-
-        damage = newDamage;
-        this.source = source;
+        rb.velocity = transform.right * data.projectileSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -22,8 +22,20 @@ public class Projectile : MonoBehaviour
         Damageable damageable = other.GetComponent<Damageable>();
         if (damageable)
         {
-            damageable.Damage(damage, damageable.transform.position, gameObject, Damageable.DamageType.DEFAULT);
+            // Deal damage
+            damageable.Damage(spellData.damage, damageable.transform.position, gameObject, Damageable.DamageType.DEFAULT);
+
+            // Add status effects
+            StatusEffectController statusEffectController = damageable.GetComponent<StatusEffectController>();
+            if (statusEffectController && spellData.onHitStatusEffects.Count > 0)
+            {
+                statusEffectController.AddStatusEffect(spellData.onHitStatusEffects);
+            }
+            
+            // Hit FX
             Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+            
+            // Destroy self.
             Destroy(gameObject);
         }
     }

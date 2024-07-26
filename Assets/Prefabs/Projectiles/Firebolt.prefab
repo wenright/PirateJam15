@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 18541854342166093}
   - component: {fileID: 2582542064019897476}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Firebolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
