@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 
     public Transform damageTextParent;
     public Transform projectileParent;
+    public Transform audioInstanceParent;
 
     private void Awake()
     {

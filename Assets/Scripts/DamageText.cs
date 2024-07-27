@@ -9,6 +9,7 @@ public class DamageText : MonoBehaviour
     [ReadOnly] public Damageable damagee;
     [ReadOnly] public Damageable.DamageType damageType;
     public TextMeshPro text;
+    public Vector3 startPos;
 
     private readonly Dictionary<Damageable.DamageType, Color> damageTypeToColor = new()
     {
@@ -24,7 +25,6 @@ public class DamageText : MonoBehaviour
     private float angle = 5f;
     private float variance = 0.75f;
     private float duration = 0.75f;
-    private Vector3 startPos;
     private float dotFontSize = 10;
 
     public void SetDamage(float damage, Damageable damagee, Damageable.DamageType damageType)
@@ -35,7 +35,7 @@ public class DamageText : MonoBehaviour
 
         startPos = transform.position + Vector3.up * startHeight;
 
-        UpdateText();
+        RefreshText();
     }
 
     public void UpdateDamage(float additionalDamage, Vector3 position)
@@ -44,23 +44,27 @@ public class DamageText : MonoBehaviour
 
         startPos = position + Vector3.up * startHeight;
 
-        UpdateText();
+        RefreshText();
     }
 
-    private void UpdateText()
+    public void RefreshText(bool roundNumber = true)
     {
         // Show tenths decimal place if < 10
-        string damageText;
-        if (damage < 10)
+        if (roundNumber)
         {
-            damageText = (Mathf.Round(damage * 10f) / 10f).ToString();
-        }
-        else
-        {
-            damageText = Mathf.RoundToInt(damage).ToString();
+            string damageText;
+            if (damage < 10)
+            {
+                damageText = (Mathf.Round(damage * 10f) / 10f).ToString();
+            }
+            else
+            {
+                damageText = Mathf.RoundToInt(damage).ToString();
+            }
+            
+            text.text = damageText;
         }
 
-        text.text = damageText;
 
         if (damageTypeToColor.TryGetValue(damageType, out var value))
         {

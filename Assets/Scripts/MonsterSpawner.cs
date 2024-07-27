@@ -4,8 +4,8 @@ using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
     private const int numCreaturesToSpawn = 10;
-    private const float spawnDistance = 15.0f;
     private const float spawnDelaySeconds = 2.0f;
+    private const float spawnDistance = 10.0f;
     private const float spawnIntervalSeconds = 1.0f;
 
     public GameObject monsterPrefab;

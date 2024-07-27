@@ -3,10 +3,10 @@ using UnityEngine;
 public class Damageable : MonoBehaviour
 {
     public float maxHealth = 100;
+    public int moneyGiven = 2;
+    public int xpGiven = 8;
     [ReadOnly] public float health = 0;
-    private int xpGiven = 10;
-    private int moneyGiven = 2;
-    private GameObject damageTextObject;
+    private GameObject damageTextPrefab;
     
     public enum DamageType
     {
@@ -22,7 +22,7 @@ public class Damageable : MonoBehaviour
     {
         health = maxHealth;
         
-        damageTextObject = Resources.Load<GameObject>("DamageText");
+        damageTextPrefab = Resources.Load<GameObject>("DamageText");
     }
 
     public void Damage(float damage, Vector2 position, GameObject source, DamageType damageType)
@@ -31,7 +31,14 @@ public class Damageable : MonoBehaviour
 
         if (health <= 0)
         {
-            // TODO on death effects, money gain etc.
+            UpgradeController.Instance.AddGold(moneyGiven);
+
+            foreach (Wizard wizard in FindObjectsByType<Wizard>(FindObjectsInactive.Exclude, FindObjectsSortMode.None))
+            {
+                wizard.AddXp(xpGiven);
+            }
+
+            // TODO death effect
             Destroy(gameObject);
         }
 
@@ -57,7 +64,7 @@ public class Damageable : MonoBehaviour
         }
 
         // TODO could maybe set damage text color/opacity to be less for other players' damage
-        GameObject textInstance = Instantiate(damageTextObject, position, Quaternion.identity, GameController.Instance.damageTextParent);
+        GameObject textInstance = Instantiate(damageTextPrefab, position, Quaternion.identity, GameController.Instance.damageTextParent);
         textInstance.GetComponent<DamageText>().SetDamage(damage, this, damageType);
     }
 }

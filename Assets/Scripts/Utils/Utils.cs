@@ -34,15 +34,23 @@ public class Utils : MonoBehaviour
 
         GameObject audioInstance = new()
         {
-            name = "AudioInstance (" + clip.name + ")"
+            name = "AudioInstance (" + clip.name + ")",
         };
         audioInstance.transform.position = position;
         audioInstance.AddComponent<DestroyAfter>().waitTime = 0.5f;
         AudioSource source = audioInstance.AddComponent<AudioSource>();
+        source.transform.parent = GameController.Instance.audioInstanceParent;
         source.clip = clip;
         source.volume = 0.2f;
         source.pitch = Random.Range(0.9f, 1.1f);
         source.spatialBlend = 1;
         source.Play();
+    }
+    
+    
+    public static int GetXpNeeded(int level)
+    {
+        // Copying the runescape formula
+        return (int) Mathf.Floor(720 * Mathf.Pow(2, level / 7.0f) + (1 / 8.0f) * level * (level - 1) - 795);
     }
 }

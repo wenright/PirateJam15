@@ -366,6 +366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  moneyGiven: 2
+  xpGiven: 8
   health: 0
 --- !u!114 &4946232639241903147
 MonoBehaviour:
@@ -392,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc727d336e524995b27b9108f109ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusEffects: []
 --- !u!1 &5519900894773701798
 GameObject:
   m_ObjectHideFlags: 0

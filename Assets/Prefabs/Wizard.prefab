@@ -178,7 +178,6 @@ GameObject:
   m_Component:
   - component: {fileID: 424021453694925810}
   - component: {fileID: 8185231158308803512}
-  - component: {fileID: 5946356821627691042}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Untagged
@@ -218,17 +217,6 @@ MonoBehaviour:
   lastFireTime: 0
   spellData: {fileID: 11400000, guid: eb8cbc97700094198a40fdf247151701, type: 2}
   projectilePrefab: {fileID: 0}
---- !u!114 &5946356821627691042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6972972845598449257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ded67444bc584011b2552b2a1365915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 0
+  level: 1
+  xp: 0
+  xpNeeded: 0
