@@ -23,7 +23,7 @@ public class MonsterSpawner : MonoBehaviour
             
             for (int i = 0; i < numCreaturesToSpawn; i++)
             {
-                Instantiate(monsterPrefab, Random.insideUnitCircle.normalized * spawnDistance, Quaternion.identity);
+                Instantiate(monsterPrefab, Random.insideUnitCircle.normalized * spawnDistance, Quaternion.identity, transform);
                 yield return new WaitForSeconds(spawnIntervalSeconds);
             }
         }

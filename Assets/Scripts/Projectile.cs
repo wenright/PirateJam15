@@ -33,10 +33,12 @@ public class Projectile : MonoBehaviour
             }
             
             // Hit FX
-            Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+            Instantiate(hitEffectPrefab, transform.position, Quaternion.identity, GameController.Instance.projectileParent);
             
-            // Destroy self.
-            Destroy(gameObject);
+            if (!spellData.piercing)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

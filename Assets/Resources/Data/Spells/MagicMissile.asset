@@ -17,7 +17,7 @@ MonoBehaviour:
   weaponType: 0
   attackSound: {fileID: 8300000, guid: bc5450b2df2dc554a8b5a2b8dbeb38cb, type: 3}
   damage: 2
-  attackCooldown: 0.5
+  attackCooldown: 0.25
   knockback: 0
   hitParticlePrefab: {fileID: 2158466171030932914, guid: 2859e0d4dd1754495a8643d9598aac6d, type: 3}
   projectileSprite: {fileID: 2042592150, guid: 97da431401d2741cfa8b0bc157f0c0e0, type: 3}
@@ -32,5 +32,5 @@ MonoBehaviour:
   homing: 0
   homingStrength: 1
   homingDistance: 3
-  piercing: 0
+  piercing: 1
   onHitStatusEffects: []

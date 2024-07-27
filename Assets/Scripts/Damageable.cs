@@ -57,7 +57,7 @@ public class Damageable : MonoBehaviour
         }
 
         // TODO could maybe set damage text color/opacity to be less for other players' damage
-        GameObject textInstance = Instantiate(damageTextObject, position, Quaternion.identity);
+        GameObject textInstance = Instantiate(damageTextObject, position, Quaternion.identity, GameController.Instance.damageTextParent);
         textInstance.GetComponent<DamageText>().SetDamage(damage, this, damageType);
     }
 }

@@ -32,11 +32,32 @@ public class Wizard : MonoBehaviour
         }
         
         lastFireTime = Time.time;
-
+        
         float angle = Utils.AngleToPoint(transform.position, targetMonster.transform.position);
-        GameObject projectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
+
+        if (spellData.numProjectiles == 1)
+        {
+            SpawnProjectile(angle);
+        }
+        else
+        {
+            for (int i = 0; i < spellData.numProjectiles; i++)
+            {
+                float pct = i / (float)(spellData.numProjectiles - 1);
+                float multishotSpread = spellData.multishotSpread * (pct - 0.5f);
+                
+                SpawnProjectile(angle + multishotSpread);
+            }
+        }
+    }
+
+    private void SpawnProjectile(float angle)
+    {
+        float randomSpread = Random.Range(-spellData.projectileSpread / 2, spellData.projectileSpread / 2);
+        GameObject projectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.AngleAxis(angle + randomSpread, Vector3.forward));
         projectileInstance.GetComponent<Projectile>().SetData(spellData, gameObject);
         
+        // Sets the in/out mask sprites
         foreach (SpriteRenderer spriteRenderer in projectileInstance.GetComponentsInChildren<SpriteRenderer>())
         {
             spriteRenderer.sprite = spellData.projectileSprite;
