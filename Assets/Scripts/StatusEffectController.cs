@@ -17,7 +17,7 @@ public class StatusEffectController : MonoBehaviour
         {
             foreach (StatusEffectData effect in statusEffects)
             {
-                GetComponent<Damageable>().Damage(effect.value * effect.stacks, transform.position, gameObject, effect.type);
+                GetComponent<Damageable>().Damage(effect.value * effect.stacks, transform.position, effect.source, effect.type);
             }
 
             tickTimer -= tickInterval;
@@ -35,15 +35,15 @@ public class StatusEffectController : MonoBehaviour
         }
     }
 
-    internal void AddStatusEffect(List<StatusEffectData> effects)
+    internal void AddStatusEffect(List<StatusEffectData> effects, GameObject source)
     {
         foreach (StatusEffectData effect in effects)
         {
-            AddStatusEffect(effect);
+            AddStatusEffect(effect, source);
         }
     }
     
-    internal void AddStatusEffect(StatusEffectData effect)
+    internal void AddStatusEffect(StatusEffectData effect, GameObject source)
     {
         if (effect == null)
         {
@@ -66,6 +66,7 @@ public class StatusEffectController : MonoBehaviour
         {
             StatusEffectData newEffect = Instantiate(effect);
             newEffect.name = effect.name;
+            newEffect.source = source;
             statusEffects.Add(newEffect);
         }
     }

@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-    private const int numCreaturesToSpawn = 10;
-    private const float spawnDelaySeconds = 2.0f;
-    private const float spawnDistance = 10.0f;
-    private const float spawnIntervalSeconds = 1.0f;
+    public float numCreaturesToSpawn = 10;
+    public float spawnDelaySeconds = 2.0f;
+    public float spawnDistance = 12.0f;
+    public float roundLengthSeconds = 10.0f;
+    public float difficultyScaling = 1.2f;
 
     public GameObject monsterPrefab;
 
@@ -21,11 +22,13 @@ public class MonsterSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnDelaySeconds);
             
-            for (int i = 0; i < numCreaturesToSpawn; i++)
+            for (int i = 0; i < Mathf.Round(numCreaturesToSpawn); i++)
             {
                 Instantiate(monsterPrefab, Random.insideUnitCircle.normalized * spawnDistance, Quaternion.identity, transform);
-                yield return new WaitForSeconds(spawnIntervalSeconds);
+                yield return new WaitForSeconds(roundLengthSeconds / numCreaturesToSpawn);
             }
+
+            numCreaturesToSpawn *= difficultyScaling;
         }
     }
 }

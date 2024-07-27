@@ -23,13 +23,13 @@ public class Projectile : MonoBehaviour
         if (damageable)
         {
             // Deal damage
-            damageable.Damage(spellData.damage, damageable.transform.position, gameObject, Damageable.DamageType.DEFAULT);
+            damageable.Damage(spellData.damage, damageable.transform.position, source, Damageable.DamageType.DEFAULT);
 
             // Add status effects
             StatusEffectController statusEffectController = damageable.GetComponent<StatusEffectController>();
             if (statusEffectController && spellData.onHitStatusEffects.Count > 0)
             {
-                statusEffectController.AddStatusEffect(spellData.onHitStatusEffects);
+                statusEffectController.AddStatusEffect(spellData.onHitStatusEffects, source);
             }
             
             // Hit FX

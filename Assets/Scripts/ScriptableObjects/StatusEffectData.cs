@@ -8,4 +8,5 @@ public class StatusEffectData : ScriptableObject
     public float duration;
     public bool isStackable = false;
     public int stacks = 1;
+    [ReadOnly] public GameObject source;
 }

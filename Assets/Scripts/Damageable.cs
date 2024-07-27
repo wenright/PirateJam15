@@ -29,6 +29,10 @@ public class Damageable : MonoBehaviour
     {
         health -= damage;
 
+        SpawnDamageText(damage, position, damageType);
+
+        source.GetComponent<DPSTracker>().Track(damage);
+        
         if (health <= 0)
         {
             UpgradeController.Instance.AddGold(moneyGiven);
@@ -41,8 +45,6 @@ public class Damageable : MonoBehaviour
             // TODO death effect
             Destroy(gameObject);
         }
-
-        SpawnDamageText(damage, position, damageType);
     }
 
     public void SpawnDamageText(float damage, Vector2 position, DamageType damageType)
