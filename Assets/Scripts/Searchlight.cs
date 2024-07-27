@@ -34,7 +34,6 @@ public class Searchlight : MonoBehaviour
         }
     }
 
-    // TODO maybe should get closest first
     public Monster GetNearestTarget()
     {
         if (visibleMonsters == null || visibleMonsters.Count == 0) return null;

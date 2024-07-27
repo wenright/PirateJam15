@@ -26,8 +26,8 @@ public class SpellData : ScriptableObject
     public float knockback = 0.0f;
     
     [Header("Effects")]
-    public GameObject projectilePrefab;
     public GameObject hitParticlePrefab;
+    public Sprite projectileSprite;
     
     [Header("Projectile data")]
     public int numProjectiles = 1;

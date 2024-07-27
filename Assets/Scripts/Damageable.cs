@@ -52,7 +52,7 @@ public class Damageable : MonoBehaviour
                 || existingDamageText.damagee != this
                 || existingDamageText.damageType != damageType) { continue; }
             
-            existingDamageText.UpdateDamage(damage);
+            existingDamageText.UpdateDamage(damage, position);
             return;
         }
 

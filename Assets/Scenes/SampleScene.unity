@@ -953,7 +953,7 @@ PrefabInstance:
     - target: {fileID: 8185231158308803512, guid: fcf5e10d3caf04a68ba9ae739b9f3a9f, type: 3}
       propertyPath: spellData
       value: 
-      objectReference: {fileID: 11400000, guid: eb8cbc97700094198a40fdf247151701, type: 2}
+      objectReference: {fileID: 11400000, guid: 581939b4aa5144e06ad7acfc343ee33e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

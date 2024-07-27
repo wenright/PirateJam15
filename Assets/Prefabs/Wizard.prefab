@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1774662234, guid: 97da431401d2741cfa8b0bc157f0c0e0, type: 3}
+  m_Sprite: {fileID: -786524817, guid: 97da431401d2741cfa8b0bc157f0c0e0, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1774662234, guid: 97da431401d2741cfa8b0bc157f0c0e0, type: 3}
+  m_Sprite: {fileID: -786524817, guid: 97da431401d2741cfa8b0bc157f0c0e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -215,10 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f00de7d8ca724d4bb245f81b2c2766e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 5165195914837427055, guid: 166227ec6f5d643ddb277891d11364f8, type: 3}
   lastFireTime: 0
-  rateOfFire: 1.5
-  damage: 7
+  spellData: {fileID: 11400000, guid: eb8cbc97700094198a40fdf247151701, type: 2}
+  projectilePrefab: {fileID: 0}
 --- !u!114 &5946356821627691042
 MonoBehaviour:
   m_ObjectHideFlags: 0
