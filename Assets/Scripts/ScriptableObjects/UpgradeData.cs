@@ -24,4 +24,6 @@ public class UpgradeData : ScriptableObject
             Rarity.Legendary, new Color(1, 0.5f, 0)
         }
     };
+
+    public int cost;
 }

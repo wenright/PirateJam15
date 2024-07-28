@@ -69,4 +69,9 @@ public class Damageable : MonoBehaviour
         GameObject textInstance = Instantiate(damageTextPrefab, position, Quaternion.identity, GameController.Instance.damageTextParent);
         textInstance.GetComponent<DamageText>().SetDamage(damage, this, damageType);
     }
+
+    public bool IsAlive()
+    {
+        return health > 0;
+    }
 }

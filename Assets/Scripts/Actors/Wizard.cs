@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Wizard : MonoBehaviour
 {
@@ -85,11 +87,16 @@ public class Wizard : MonoBehaviour
             // TODO Show level up upgrades
             Debug.Log("Ding!", gameObject);
             
-            // Hijacking damage text prefab to show this
+            // Hijacking damage text prefab to show level up
             GameObject textInstance = Instantiate(damageTextPrefab, transform.position, Quaternion.identity, transform);
             textInstance.GetComponent<DamageText>().text.text = "LVL " + level;
             textInstance.GetComponent<DamageText>().startPos = transform.position + Vector3.up * 1.0f;
             textInstance.GetComponent<DamageText>().RefreshText(false);
         }
+    }
+
+    private void OnMouseEnter()
+    {
+        
     }
 }

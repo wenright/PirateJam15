@@ -15,9 +15,10 @@ public class StatusEffectController : MonoBehaviour
 
         if (tickTimer >= tickInterval)
         {
+            Damageable damageable = GetComponent<Damageable>();
             foreach (StatusEffectData effect in statusEffects)
             {
-                GetComponent<Damageable>().Damage(effect.value * effect.stacks, transform.position, effect.source, effect.type);
+                damageable.Damage(effect.value * effect.stacks, transform.position, effect.source, effect.type);
             }
 
             tickTimer -= tickInterval;
