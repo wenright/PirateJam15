@@ -7,6 +7,6 @@ public class ConsoleCommands : MonoBehaviour
     public static void Motherlode()
     {
         Debug.Log("Here's some money");
-        // ScoringManager.AddMoney(999, Vector3.zero);
+        UpgradeController.Instance.AddGold(999);
     }
 }
