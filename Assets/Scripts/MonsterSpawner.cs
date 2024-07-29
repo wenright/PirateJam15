@@ -8,11 +8,14 @@ public class MonsterSpawner : MonoBehaviour
     public float spawnDistance = 12.0f;
     public float roundLengthSeconds = 10.0f;
     public float difficultyScaling = 1.2f;
+    public bool doneSpawning;
 
     public GameObject monsterPrefab;
 
     private IEnumerator Spawn()
     {
+        doneSpawning = false;
+        
         yield return new WaitForSeconds(spawnDelaySeconds);
         
         for (int i = 0; i < Mathf.Round(numCreaturesToSpawn); i++)
@@ -24,7 +27,7 @@ public class MonsterSpawner : MonoBehaviour
         numCreaturesToSpawn *= difficultyScaling;
         
         // TODO increase difficulty here?
-        GameController.Instance.SwitchState(GameController.State.SHOPPING);
+        doneSpawning = true;
     }
 
     public void StartRound()

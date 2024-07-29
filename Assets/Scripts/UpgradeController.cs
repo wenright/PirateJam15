@@ -46,6 +46,11 @@ public class UpgradeController : MonoBehaviour
 
     public void RefreshShop()
     {
+        for (int i = UIController.Instance.shopUpgradeCardParent.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(UIController.Instance.shopUpgradeCardParent.transform.GetChild(i).gameObject);
+        }
+        
         int numItemsInShop = 2;
         for (int i = 0; i < numItemsInShop; i++)
         {

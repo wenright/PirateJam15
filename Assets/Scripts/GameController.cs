@@ -29,6 +29,14 @@ public class GameController : MonoBehaviour
         // TODO Probably should have a start screen
         SwitchState(State.NIGHTTIME);
     }
+
+    private void Update()
+    {
+        if (state == State.NIGHTTIME && monsterSpawner.doneSpawning && monsterSpawner.transform.childCount == 0)
+        {
+            GameController.Instance.SwitchState(State.SHOPPING);
+        }
+    }
     
     public void SwitchState(State newState)
     {
@@ -47,6 +55,7 @@ public class GameController : MonoBehaviour
                 break;
             case State.SHOPPING:
                 UIController.Instance.shopParent.SetActive(true);
+                UpgradeController.Instance.RefreshShop();
                 break;
             default:
                 break;
