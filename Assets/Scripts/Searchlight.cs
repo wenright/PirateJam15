@@ -22,6 +22,17 @@ public class Searchlight : MonoBehaviour
         if (otherMonster)
         {
             visibleMonsters.Add(otherMonster);
+            otherMonster.isIlluminated = true;
+
+            if (UpgradeController.Instance.ownedUpgrades.Any(u => u.upgradeType == UpgradeData.UpgradeType.BurningLight))
+            {
+                StatusEffectData lightBurnData = ScriptableObject.CreateInstance<StatusEffectData>();
+                lightBurnData.type = Damageable.DamageType.LIGHT;
+                lightBurnData.duration = 99999999;
+                lightBurnData.stacks = 1;
+                lightBurnData.value = 1; // TODO could be upgraded
+                otherMonster.GetComponent<StatusEffectController>().AddStatusEffect(lightBurnData, null);
+            }
         }
     }
     
@@ -31,6 +42,9 @@ public class Searchlight : MonoBehaviour
         if (otherMonster)
         {
             visibleMonsters.Remove(otherMonster);
+            otherMonster.isIlluminated = false;
+
+            otherMonster.GetComponent<StatusEffectController>().RemoveStatusEffect(Damageable.DamageType.LIGHT);
         }
     }
 

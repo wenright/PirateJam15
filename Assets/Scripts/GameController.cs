@@ -34,6 +34,12 @@ public class GameController : MonoBehaviour
                 break;
             case State.AWAITING_START:
                 break;
+            case State.NIGHTTIME:
+                UIController.Instance.shopParent.SetActive(false);
+                break;
+            case State.SHOPPING:
+                UIController.Instance.shopParent.SetActive(true);
+                break;
             default:
                 break;
         }

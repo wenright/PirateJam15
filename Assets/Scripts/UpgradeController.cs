@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class UpgradeController : MonoBehaviour
     [ReadOnly] public List<UpgradeData> possibleUpgrades = new();
 
     public GameObject shopUpgradeCardPrefab;
+    public Button leaveShopButton; 
 
     private int gold;
     
@@ -21,6 +23,8 @@ public class UpgradeController : MonoBehaviour
     {
         possibleUpgrades.AddRange(Resources.LoadAll<UpgradeData>("Data/Upgrades"));
         RefreshShop();
+        
+        leaveShopButton.onClick.AddListener(LeaveShop);
     }
 
     public void AddGold(int amount)
@@ -48,5 +52,10 @@ public class UpgradeController : MonoBehaviour
             cardInstance.GetComponent<UpgradeCard>().SetData(possibleUpgrades[Random.Range(0, possibleUpgrades.Count)]);
             // TODO do I need to refresh UI to get horizontal scroll thing to work
         }
+    }
+
+    private void LeaveShop()
+    {
+        GameController.Instance.SwitchState(GameController.State.NIGHTTIME);   
     }
 }

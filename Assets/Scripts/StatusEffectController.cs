@@ -16,7 +16,7 @@ public class StatusEffectController : MonoBehaviour
         if (tickTimer >= tickInterval)
         {
             Damageable damageable = GetComponent<Damageable>();
-            foreach (StatusEffectData effect in statusEffects)
+            foreach (StatusEffectData effect in statusEffects.ToList())
             {
                 damageable.Damage(effect.value * effect.stacks, transform.position, effect.source, effect.type);
             }
@@ -70,5 +70,11 @@ public class StatusEffectController : MonoBehaviour
             newEffect.source = source;
             statusEffects.Add(newEffect);
         }
+    }
+
+    // Removes all status effects of type. Really just used for burning light perk
+    internal void RemoveStatusEffect(Damageable.DamageType type)
+    {
+        statusEffects.RemoveAll(e => e.type == type);
     }
 }

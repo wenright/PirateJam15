@@ -49,7 +49,7 @@ public class DamageText : MonoBehaviour
 
     public void RefreshText(bool roundNumber = true)
     {
-        // Show tenths decimal place if < 10
+        // Show tenths decimal place if < 10. Can be disabled to not replace number if using a string instead
         if (roundNumber)
         {
             string damageText;
@@ -65,16 +65,17 @@ public class DamageText : MonoBehaviour
             text.text = damageText;
         }
 
-
+        // Determine which color should be used
         if (damageTypeToColor.TryGetValue(damageType, out var value))
         {
             text.color = value;
         }
 
-        // DOT damage should have a smaller font size
+        // DOT damage should have a smaller font size, and should appear to the side so it doesn't overlap normal dmg
         if (damageType != Damageable.DamageType.DEFAULT)
         {
             text.fontSize = dotFontSize;
+            startPos += Vector3.right * 1.0f;
         }
 
         Vector3 endPos = startPos + new Vector3(0, endHeight + (variance * Random.Range(-0.5f, 0.5f)), 0);

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b479228ff7ec0423c9bb172784e98b78, type: 3}
-  m_Name: DazzlingLight
+  m_Name: IncreasedXp
   m_EditorClassIdentifier: 
   rarity: 0
-  displayName: Dazzling Light
-  description: Slows down all illuminated monsters by 25%
-  cost: 8
-  value: 0.25
-  upgradeType: 0
+  displayName: Thinking Cap
+  description: +20% xp gained on all wizards
+  cost: 4
+  value: 0.2
+  upgradeType: 2

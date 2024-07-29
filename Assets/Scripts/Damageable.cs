@@ -16,6 +16,7 @@ public class Damageable : MonoBehaviour
         ICE,
         FIRE,
         BLEED,
+        LIGHT,
     }
 
     private void Start()
@@ -31,7 +32,10 @@ public class Damageable : MonoBehaviour
 
         SpawnDamageText(damage, position, damageType);
 
-        source.GetComponent<DPSTracker>().Track(damage);
+        if (source)
+        {
+            source.GetComponent<DPSTracker>().Track(damage);
+        }
         
         if (health <= 0)
         {

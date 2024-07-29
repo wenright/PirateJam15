@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
 
     public TMP_Text goldText;
     public Transform shopUpgradeCardParent;
+    public GameObject shopParent;
 
     private void Awake()
     {

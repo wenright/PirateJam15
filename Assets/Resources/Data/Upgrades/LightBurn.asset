@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b479228ff7ec0423c9bb172784e98b78, type: 3}
-  m_Name: DazzlingLight
+  m_Name: LightBurn
   m_EditorClassIdentifier: 
-  rarity: 0
-  displayName: Dazzling Light
-  description: Slows down all illuminated monsters by 25%
-  cost: 8
-  value: 0.25
-  upgradeType: 0
+  rarity: 1
+  displayName: Light Burn
+  description: Damages all illuminated monsters
+  cost: 12
+  value: 1
+  upgradeType: 1

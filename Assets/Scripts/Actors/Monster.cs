@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
@@ -8,6 +9,7 @@ public class Monster : MonoBehaviour
     private float attackDamage = 10.0f;
     private float lastAttackTimeSeconds;
     private float attackDelaySeconds = 0.25f;
+    public bool isIlluminated;
     
     private Rigidbody2D rb;
 
@@ -21,6 +23,11 @@ public class Monster : MonoBehaviour
         if (Vector3.Distance(transform.position, target) > attackDistance)
         {
             rb.velocity = (target - transform.position).normalized * speed;
+            if (isIlluminated)
+            {
+                // TODO could pull a value, so it can be upgraded
+                rb.velocity *= 0.75f;
+            }
         }
         else
         {
@@ -31,6 +38,12 @@ public class Monster : MonoBehaviour
                 Attack();
             }
         }
+
+        // if (isIlluminated && UpgradeController.Instance.ownedUpgrades.Any(u => u.upgradeType == UpgradeData.UpgradeType.BurningLight))
+        // {
+        //     // TODO values
+        //     
+        // }
     }
 
     private void Attack()

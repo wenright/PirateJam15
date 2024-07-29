@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +6,10 @@ public class UpgradeCard : MonoBehaviour
 {
     private UpgradeData data;
     private Button button;
+
+    public TMP_Text nameText;
+    public TMP_Text descriptionText;
+    public TMP_Text costText;
 
     private void Start()
     {
@@ -15,7 +20,10 @@ public class UpgradeCard : MonoBehaviour
     public void SetData(UpgradeData upgradeData)
     {
         data = upgradeData;
-        // TODO set text desc/cost
+
+        nameText.text = upgradeData.displayName;
+        descriptionText.text = upgradeData.description;
+        costText.text = upgradeData.cost + "G";
     }
     
     private void Buy()

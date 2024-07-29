@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -77,7 +78,9 @@ public class Wizard : MonoBehaviour
 
     public void AddXp(int xpAmount)
     {
-        xp += xpAmount;
+        float xpMult = UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.IncreasedXp).Sum(u => u.value);
+        
+        xp += (int)(xpAmount * (1 + xpMult));
 
         while (xp >= xpNeeded)
         {

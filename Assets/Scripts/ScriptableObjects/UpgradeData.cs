@@ -25,5 +25,16 @@ public class UpgradeData : ScriptableObject
         }
     };
 
+    public string displayName;
+    public string description;
     public int cost;
+    public float value;
+
+    public enum UpgradeType
+    {
+        DazzlingLight,
+        BurningLight,
+        IncreasedXp,
+    }
+    public UpgradeType upgradeType;
 }
