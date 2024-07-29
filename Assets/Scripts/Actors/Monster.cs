@@ -1,11 +1,10 @@
-using System.Linq;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
     private Vector3 target = Vector3.zero;
     private float speed = 1.0f;
-    private float attackDistance = 1f;
+    private float attackDistance = 1.5f;
     private float attackDamage = 10.0f;
     private float lastAttackTimeSeconds;
     private float attackDelaySeconds = 0.25f;
