@@ -36,6 +36,9 @@ public class UpgradeData : ScriptableObject
         BurningLight,
         IncreasedXp,
         TurnSpeed,
+        AddWizard,
     }
     public UpgradeType upgradeType;
+
+    [ShowIf("upgradeType", UpgradeType.AddWizard)] public SpellData newWizardSpell;
 }
