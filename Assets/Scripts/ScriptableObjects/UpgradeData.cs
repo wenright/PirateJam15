@@ -35,6 +35,7 @@ public class UpgradeData : ScriptableObject
         DazzlingLight,
         BurningLight,
         IncreasedXp,
+        TurnSpeed,
     }
     public UpgradeType upgradeType;
 }

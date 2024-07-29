@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public Transform damageTextParent;
     public Transform projectileParent;
     public Transform audioInstanceParent;
+    public MonsterSpawner monsterSpawner;
 
     public enum State
     {
@@ -23,6 +24,12 @@ public class GameController : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        // TODO Probably should have a start screen
+        SwitchState(State.NIGHTTIME);
+    }
+    
     public void SwitchState(State newState)
     {
         Debug.Log($"Switching to state {newState}");
@@ -36,6 +43,7 @@ public class GameController : MonoBehaviour
                 break;
             case State.NIGHTTIME:
                 UIController.Instance.shopParent.SetActive(false);
+                monsterSpawner.StartRound();
                 break;
             case State.SHOPPING:
                 UIController.Instance.shopParent.SetActive(true);

@@ -11,24 +11,24 @@ public class MonsterSpawner : MonoBehaviour
 
     public GameObject monsterPrefab;
 
-    private void Start()
-    {
-        StartCoroutine(Spawn());
-    }
-
     private IEnumerator Spawn()
     {
-        while (true)
+        yield return new WaitForSeconds(spawnDelaySeconds);
+        
+        for (int i = 0; i < Mathf.Round(numCreaturesToSpawn); i++)
         {
-            yield return new WaitForSeconds(spawnDelaySeconds);
-            
-            for (int i = 0; i < Mathf.Round(numCreaturesToSpawn); i++)
-            {
-                Instantiate(monsterPrefab, Random.insideUnitCircle.normalized * spawnDistance, Quaternion.identity, transform);
-                yield return new WaitForSeconds(roundLengthSeconds / numCreaturesToSpawn);
-            }
-
-            numCreaturesToSpawn *= difficultyScaling;
+            Instantiate(monsterPrefab, Random.insideUnitCircle.normalized * spawnDistance, Quaternion.identity, transform);
+            yield return new WaitForSeconds(roundLengthSeconds / numCreaturesToSpawn);
         }
+
+        numCreaturesToSpawn *= difficultyScaling;
+        
+        // TODO increase difficulty here?
+        GameController.Instance.SwitchState(GameController.State.SHOPPING);
+    }
+
+    public void StartRound()
+    {
+        StartCoroutine(Spawn());
     }
 }

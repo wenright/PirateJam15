@@ -13,7 +13,8 @@ public class Searchlight : MonoBehaviour
         // transform.rotation = Quaternion.LookRotation(Vector3.forward, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
 
         float rotationDirection = -Input.GetAxisRaw("Horizontal");
-        transform.rotation *= Quaternion.Euler(0, 0, rotationDirection * rotateSpeed * Time.deltaTime);
+        float speedBonus = 1 + UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.TurnSpeed).Sum(u => u.value);
+        transform.rotation *= Quaternion.Euler(0, 0, rotationDirection * rotateSpeed * speedBonus * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -24,13 +25,15 @@ public class Searchlight : MonoBehaviour
             visibleMonsters.Add(otherMonster);
             otherMonster.isIlluminated = true;
 
-            if (UpgradeController.Instance.ownedUpgrades.Any(u => u.upgradeType == UpgradeData.UpgradeType.BurningLight))
+            float burnAmount = UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.BurningLight).Sum(u => u.value);
+
+            if (burnAmount > 0)
             {
                 StatusEffectData lightBurnData = ScriptableObject.CreateInstance<StatusEffectData>();
                 lightBurnData.type = Damageable.DamageType.LIGHT;
                 lightBurnData.duration = 99999999;
                 lightBurnData.stacks = 1;
-                lightBurnData.value = 1; // TODO could be upgraded
+                lightBurnData.value = burnAmount;
                 otherMonster.GetComponent<StatusEffectController>().AddStatusEffect(lightBurnData, null);
             }
         }

@@ -6,11 +6,12 @@ public class UpgradeController : MonoBehaviour
 {
     public static UpgradeController Instance;
     
-    [ReadOnly] public List<UpgradeData> ownedUpgrades = new();
-    [ReadOnly] public List<UpgradeData> possibleUpgrades = new();
+    public List<UpgradeData> ownedUpgrades = new();
+    public List<UpgradeData> possibleUpgrades = new();
 
     public GameObject shopUpgradeCardPrefab;
     public Button leaveShopButton; 
+    public Button rerollShopButton; // TODO 
 
     private int gold;
     
@@ -45,7 +46,7 @@ public class UpgradeController : MonoBehaviour
 
     public void RefreshShop()
     {
-        int numItemsInShop = 3;
+        int numItemsInShop = 2;
         for (int i = 0; i < numItemsInShop; i++)
         {
             GameObject cardInstance = Instantiate(shopUpgradeCardPrefab, UIController.Instance.shopUpgradeCardParent);

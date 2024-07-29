@@ -25,7 +25,7 @@ public class Monster : MonoBehaviour
             rb.velocity = (target - transform.position).normalized * speed;
             if (isIlluminated)
             {
-                // TODO could pull a value, so it can be upgraded
+                // TODO could pull a value, so it can be upgraded. Might require using a StatusEffect which would require changing StatusEffects to not always deal damage
                 rb.velocity *= 0.75f;
             }
         }
@@ -38,12 +38,6 @@ public class Monster : MonoBehaviour
                 Attack();
             }
         }
-
-        // if (isIlluminated && UpgradeController.Instance.ownedUpgrades.Any(u => u.upgradeType == UpgradeData.UpgradeType.BurningLight))
-        // {
-        //     // TODO values
-        //     
-        // }
     }
 
     private void Attack()
