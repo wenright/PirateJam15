@@ -3,9 +3,16 @@ using UnityEngine;
 
 public class WizardSpawner : MonoBehaviour
 {
+    public static WizardSpawner Instance;
+    
     public List<Wizard> wizards = new();
     public GameObject wizardPrefab;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+    
     private void Start()
     {
         SpawnWizard();

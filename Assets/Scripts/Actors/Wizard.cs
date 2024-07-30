@@ -1,16 +1,22 @@
-using System;
+using System.Collections;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Wizard : MonoBehaviour
 {
-    [ReadOnly] public float lastFireTime = 0.0f;
+    public SpriteRenderer levelUpIcon;
+    [ReadOnly] public float lastFireTime;
     public SpellData spellData;
     [ReadOnly] public GameObject projectilePrefab;
     [ReadOnly] public int level = 1;
     [ReadOnly] public int xp;
     [ReadOnly] public int xpNeeded;
+    [ReadOnly] public int pendingUpgrades;
+    public float wanderRadius = 1.0f;
+    public float wanderIntervalSeconds = 2.5f;
+    public float wanderSpeed = 0.5f;
 
     private Searchlight searchlight;
     private GameObject damageTextPrefab;
@@ -22,6 +28,8 @@ public class Wizard : MonoBehaviour
         
         searchlight = FindObjectOfType<Searchlight>();
         xpNeeded = Utils.GetXpNeeded(2);
+
+        StartCoroutine(nameof(Wander));
     }
 
     private void Update()
@@ -95,11 +103,34 @@ public class Wizard : MonoBehaviour
             textInstance.GetComponent<DamageText>().text.text = "LVL " + level;
             textInstance.GetComponent<DamageText>().startPos = transform.position + Vector3.up * 1.0f;
             textInstance.GetComponent<DamageText>().RefreshText(false);
+
+            levelUpIcon.enabled = true;
+
+            if (level % 5 == 0)
+            {
+                pendingUpgrades++;
+            }
         }
     }
 
-    private void OnMouseEnter()
+    private void OnMouseUp()
     {
-        
+        if (pendingUpgrades > 0)
+        {
+            UIController.Instance.ShowWizardUpgrade(this);
+        }
+        else
+        {
+            UIController.Instance.ShowWizardInfo(this);
+        }
+    }
+
+    private IEnumerator Wander()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(wanderIntervalSeconds + Random.Range(0.0f, 1.0f));
+            transform.DOMove(Random.insideUnitCircle * wanderRadius, wanderSpeed).SetEase(Ease.Linear);
+        }
     }
 }

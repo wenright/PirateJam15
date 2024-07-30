@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b479228ff7ec0423c9bb172784e98b78, type: 3}
+  m_Name: AddWizard
+  m_EditorClassIdentifier: 
+  rarity: 2
+  displayName: Hire fire wizard
+  description: Adds a new wizard to your tower
+  cost: 24
+  value: 1
+  upgradeType: 4
+  newWizardSpell: {fileID: 11400000, guid: eb8cbc97700094198a40fdf247151701, type: 2}

@@ -5,7 +5,8 @@ public class StatusEffectData : ScriptableObject
 {
     public Damageable.DamageType type;
     public float value;
-    public float duration;
+    public bool hasDuration = true;
+    [ShowIf("hasDuration", true)] public float duration;
     public bool isStackable = false;
     public int stacks = 1;
     [ReadOnly] public GameObject source;

@@ -25,7 +25,7 @@ public class StatusEffectController : MonoBehaviour
         }
 
         // Note: Need to use ToList() to avoid modifying the list while iterating over it
-        foreach (StatusEffectData effect in statusEffects.ToList())
+        foreach (StatusEffectData effect in statusEffects.ToList().Where(effect => effect.hasDuration))
         {
             effect.duration -= Time.fixedDeltaTime;
 
@@ -70,6 +70,26 @@ public class StatusEffectController : MonoBehaviour
             newEffect.source = source;
             statusEffects.Add(newEffect);
         }
+    }
+
+    internal void DecrementStacks(Damageable.DamageType type)
+    {
+        StatusEffectData existingEffect = statusEffects.Find(e => e.type == type);
+
+        if (existingEffect != null)
+        {
+            if (existingEffect.isStackable)
+            {
+                existingEffect.stacks--;
+            }
+
+            if (existingEffect.stacks > 0)
+            {
+                return;
+            }
+        }
+        
+        RemoveStatusEffect(type);
     }
 
     // Removes all status effects of type. Really just used for burning light perk

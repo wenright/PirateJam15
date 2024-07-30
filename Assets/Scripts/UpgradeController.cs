@@ -42,6 +42,11 @@ public class UpgradeController : MonoBehaviour
     public void AddUpgrade(UpgradeData upgradeData)
     {
         ownedUpgrades.Add(upgradeData);
+
+        if (upgradeData.upgradeType == UpgradeData.UpgradeType.AddWizard)
+        {
+            WizardSpawner.Instance.SpawnWizard();
+        }
     }
 
     public void RefreshShop()
