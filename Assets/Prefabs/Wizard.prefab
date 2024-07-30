@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2030897026366543366}
   - component: {fileID: 185813743944716291}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: dark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 541048197247623030}
   - component: {fileID: 4864182008725265345}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LevelupIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5133063216828895282}
   - component: {fileID: 7637112210720610860}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 363502490244190704}
   - component: {fileID: 1996413456308917141}
   - component: {fileID: 3347596417350419469}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wizard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,6 +309,10 @@ MonoBehaviour:
   level: 1
   xp: 0
   xpNeeded: 0
+  pendingUpgrades: 0
+  wanderRadius: 1
+  wanderIntervalSeconds: 2.5
+  wanderSpeed: 0.5
 --- !u!114 &363502490244190704
 MonoBehaviour:
   m_ObjectHideFlags: 0

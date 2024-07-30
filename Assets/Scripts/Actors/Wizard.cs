@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using DG.Tweening;
@@ -34,7 +35,8 @@ public class Wizard : MonoBehaviour
 
     private void Update()
     {
-        if (lastFireTime + spellData.attackCooldown < Time.time)
+        float cooldown = spellData.attackCooldown * (Mathf.Lerp(1, 0.25f, Mathf.Pow(level - 1, 1.2f) / 100.0f));
+        if (lastFireTime + cooldown < Time.time)
         {
             Fire();
         }
@@ -71,7 +73,7 @@ public class Wizard : MonoBehaviour
 
     private void SpawnProjectile(float angle)
     {
-        float damageBonus = 1 + Mathf.Pow(level - 1, 2) * 0.1f;
+        float damageBonus = 1 + Mathf.Pow(level - 1, 1.7f) * 0.1f;
         float randomSpread = Random.Range(-spellData.projectileSpread / 2, spellData.projectileSpread / 2);
         GameObject projectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.AngleAxis(angle + randomSpread, Vector3.forward), GameController.Instance.projectileParent);
         projectileInstance.GetComponent<Projectile>().SetData(spellData, gameObject, damageBonus);
@@ -108,18 +110,6 @@ public class Wizard : MonoBehaviour
                 // levelUpIcon.enabled = true;
                 // pendingUpgrades++;
             }
-        }
-    }
-
-    private void OnMouseUp()
-    {
-        if (pendingUpgrades > 0)
-        {
-            UIController.Instance.ShowWizardUpgrade(this);
-        }
-        else
-        {
-            UIController.Instance.ShowWizardInfo(this);
         }
     }
 

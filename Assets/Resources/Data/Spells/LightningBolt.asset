@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fcd82c79a564c7582049fb220f0bba, type: 3}
   m_Name: LightningBolt
   m_EditorClassIdentifier: 
-  displayName: Firebolt
-  description: Shoot a lil fire
+  displayName: Lightning Bolt
+  description: 'Fast moving '
+  icon: {fileID: 0}
   weaponType: 0
   attackSound: {fileID: 8300000, guid: bc5450b2df2dc554a8b5a2b8dbeb38cb, type: 3}
   damage: 2

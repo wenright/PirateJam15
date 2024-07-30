@@ -24,8 +24,6 @@ public class MonsterSpawner : MonoBehaviour
             yield return new WaitForSeconds(roundLengthSeconds / numCreaturesToSpawn);
         }
         
-        yield return new WaitForSeconds(1.5f);
-        
         numCreaturesToSpawn *= difficultyScaling;
         // TODO spawn new enemies each night?
         doneSpawning = true;

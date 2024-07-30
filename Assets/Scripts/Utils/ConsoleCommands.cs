@@ -13,6 +13,8 @@ public class ConsoleCommands : MonoBehaviour
     [ConsoleMethod("buy", "Buys the specified upgrade")]
     public static void Buy(UpgradeData.UpgradeType type)
     {
+        Debug.Log("Buying " + type);
+        
         UpgradeData[] upgrades = Resources.LoadAll<UpgradeData>("Data/Upgrades");
         foreach (var upgrade in upgrades)
         {
@@ -22,5 +24,12 @@ public class ConsoleCommands : MonoBehaviour
                 return;
             }
         }
+    }
+
+    [ConsoleMethod("xp", "Add x xp to all wizards")]
+    public static void Level(int x)
+    {
+        Debug.Log("Adding " + x + " xp to all wizards");
+        WizardSpawner.Instance.wizards.ForEach(w => w.AddXp(x));
     }
 }

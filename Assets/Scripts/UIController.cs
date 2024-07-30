@@ -10,59 +10,44 @@ public class UIController : MonoBehaviour
     public Transform shopUpgradeCardParent;
     public GameObject shopParent;
     public GameObject wizardInfoCanvas;
-    public Button wizardInfoCloseButton;
+    public TMP_Text wizardInfoNameText;
+    public TMP_Text wizardInfoLevelText;
     public TMP_Text wizardInfoDPSText;
-    public GameObject wizardUpgradeCanvas;
-    public Button wizardUpgradeCloseButton;
     public TMP_Text nightCountText;
-
-    [ReadOnly] public Wizard selectedWizard;
 
     private void Awake()
     {
         Instance = this;
     }
 
-    private void Start()
-    {
-        wizardInfoCloseButton.onClick.AddListener(CloseWizardInfo);
-        wizardUpgradeCloseButton.onClick.AddListener(CloseWizardUpgrade);
-    }
-
     private void Update()
     {
-        if (selectedWizard)
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, 1, ~LayerMask.NameToLayer("Wizard"));
+        
+        if (hit)
         {
-            if (wizardInfoCanvas.activeSelf)
+            Wizard wiz = hit.transform.GetComponent<Wizard>();
+            if (wiz)
             {
-                wizardInfoDPSText.text = selectedWizard.GetComponent<DPSTracker>().GetDPS().ToString();
+                wizardInfoCanvas.SetActive(true);
+                
+                wizardInfoNameText.text = wiz.spellData.displayName + " wizard";
+                wizardInfoDPSText.text = wiz.GetComponent<DPSTracker>().GetDPS().ToString();
+                wizardInfoLevelText.text = "level " + wiz.level;
+                
+                Vector3 worldPos = mousePos + Vector3.up * 2.0f;
+                worldPos.z = 0;
+                wizardInfoCanvas.transform.position = worldPos;
             }
             else
             {
-                
+                wizardInfoCanvas.SetActive(false);
             }
         }
-    }
-
-    public void ShowWizardInfo(Wizard wizard)
-    {
-        selectedWizard = wizard;
-        wizardInfoCanvas.SetActive(true);
-    }
-
-    public void ShowWizardUpgrade(Wizard wizard)
-    {
-        selectedWizard = wizard;
-        wizardUpgradeCanvas.SetActive(true);
-    }
-
-    private void CloseWizardInfo()
-    {
-        wizardInfoCanvas.SetActive(false);
-    }
-
-    private void CloseWizardUpgrade()
-    {
-        wizardUpgradeCanvas.SetActive(false);
+        else
+        {
+            wizardInfoCanvas.SetActive(false);
+        }
     }
 }
