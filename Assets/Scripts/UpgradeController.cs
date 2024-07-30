@@ -59,7 +59,7 @@ public class UpgradeController : MonoBehaviour
             Destroy(UIController.Instance.shopUpgradeCardParent.transform.GetChild(i).gameObject);
         }
         
-        int numItemsInShop = 2;
+        int numItemsInShop = 3;
         for (int i = 0; i < numItemsInShop; i++)
         {
             GameObject cardInstance = Instantiate(shopUpgradeCardPrefab, UIController.Instance.shopUpgradeCardParent);
