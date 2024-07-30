@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b479228ff7ec0423c9bb172784e98b78, type: 3}
-  m_Name: AddWizard
+  m_Name: AddFireboltWizard
   m_EditorClassIdentifier: 
   rarity: 2
   displayName: Hire fire wizard

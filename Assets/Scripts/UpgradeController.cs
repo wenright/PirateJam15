@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class UpgradeController : MonoBehaviour
     public GameObject shopUpgradeCardPrefab;
     public Button leaveShopButton; 
     public Button rerollShopButton;
+    public TMP_Text rerollCostText;
     public int defaultRerollCost = 3;
     public int rerollCost;
     public int rerollCostIncrement = 1;
@@ -28,6 +30,7 @@ public class UpgradeController : MonoBehaviour
         possibleUpgrades.AddRange(Resources.LoadAll<UpgradeData>("Data/Upgrades"));
 
         rerollCost = defaultRerollCost;
+        rerollCostText.text = rerollCost.ToString();
         RefreshShop();
         
         leaveShopButton.onClick.AddListener(LeaveShop);
@@ -91,7 +94,9 @@ public class UpgradeController : MonoBehaviour
         {
             AddGold(rerollCost);
             RefreshShop();
+            
             rerollCost += rerollCostIncrement;
+            rerollCostText.text = rerollCost.ToString();
         }
     }
 }

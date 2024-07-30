@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
@@ -24,8 +25,11 @@ public class Monster : MonoBehaviour
             rb.velocity = (target - transform.position).normalized * speed;
             if (isIlluminated)
             {
-                // TODO could pull a value, so it can be upgraded. Might require using a StatusEffect which would require changing StatusEffects to not always deal damage
-                rb.velocity *= 0.75f;
+                int numSlowingLights = UpgradeController.Instance.ownedUpgrades.Count(u => u.upgradeType == UpgradeData.UpgradeType.DazzlingLight);
+                for (int i = 0; i < numSlowingLights; i++)
+                {
+                    rb.velocity *= 0.75f;
+                }
             }
         }
         else
