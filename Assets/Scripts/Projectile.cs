@@ -6,12 +6,15 @@ public class Projectile : MonoBehaviour
     [ReadOnly] public SpellData spellData;
 
     private GameObject source;
+    private float damageBonus = 1; 
+    
     private Rigidbody2D rb;
     
-    public void SetData(SpellData data, GameObject owner)
+    public void SetData(SpellData data, GameObject owner, float damageBonus)
     {
         spellData = data;
         source = owner;
+        this.damageBonus = damageBonus;
         
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * data.projectileSpeed;
@@ -23,7 +26,7 @@ public class Projectile : MonoBehaviour
         if (damageable)
         {
             // Deal damage
-            damageable.Damage(spellData.damage, damageable.transform.position, source, Damageable.DamageType.DEFAULT);
+            damageable.Damage(spellData.damage * damageBonus, damageable.transform.position, source, Damageable.DamageType.DEFAULT);
 
             // Add status effects
             StatusEffectController statusEffectController = damageable.GetComponent<StatusEffectController>();

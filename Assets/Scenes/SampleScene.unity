@@ -2184,33 +2184,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3.46
---- !u!50 &192880202
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &192880202
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192880198}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9685f1d31a64040abb5ed4e2bba222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &198597769
 GameObject:
   m_ObjectHideFlags: 0
@@ -7785,8 +7770,9 @@ GameObject:
   - component: {fileID: 903144423}
   - component: {fileID: 903144427}
   - component: {fileID: 903144428}
+  - component: {fileID: 903144429}
   m_Layer: 0
-  m_Name: light
+  m_Name: Searchlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7919,33 +7905,32 @@ PolygonCollider2D:
       - {x: 1.1875, y: 1.125}
       - {x: 5.875, y: 11}
   m_UseDelaunayMesh: 0
---- !u!50 &903144428
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &903144428
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903144422}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1452a2822399044f8a4fa1beb9db7584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visibleMonsters: []
+  rotateSpeed: 75
+--- !u!114 &903144429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903144422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9685f1d31a64040abb5ed4e2bba222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &914634660
 GameObject:
   m_ObjectHideFlags: 0
@@ -11489,7 +11474,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1305052340}
-  - component: {fileID: 1305052341}
   m_Layer: 0
   m_Name: Lights
   m_TagString: Untagged
@@ -11515,20 +11499,6 @@ Transform:
   - {fileID: 903144425}
   m_Father: {fileID: 1441379932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1305052341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305052339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1452a2822399044f8a4fa1beb9db7584, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  visibleMonsters: []
-  rotateSpeed: 75
 --- !u!1 &1309617945
 GameObject:
   m_ObjectHideFlags: 0

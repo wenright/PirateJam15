@@ -71,9 +71,10 @@ public class Wizard : MonoBehaviour
 
     private void SpawnProjectile(float angle)
     {
+        float damageBonus = 1 + Mathf.Pow(level - 1, 2) * 0.1f;
         float randomSpread = Random.Range(-spellData.projectileSpread / 2, spellData.projectileSpread / 2);
         GameObject projectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.AngleAxis(angle + randomSpread, Vector3.forward), GameController.Instance.projectileParent);
-        projectileInstance.GetComponent<Projectile>().SetData(spellData, gameObject);
+        projectileInstance.GetComponent<Projectile>().SetData(spellData, gameObject, damageBonus);
         
         // Sets the in/out mask sprites
         foreach (SpriteRenderer spriteRenderer in projectileInstance.GetComponentsInChildren<SpriteRenderer>())
