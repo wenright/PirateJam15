@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public Transform projectileParent;
     public Transform audioInstanceParent;
     public MonsterSpawner monsterSpawner;
+    [ReadOnly] public int nightCount;
 
     public enum State
     {
@@ -50,6 +51,8 @@ public class GameController : MonoBehaviour
             case State.AWAITING_START:
                 break;
             case State.NIGHTTIME:
+                nightCount++;
+                UIController.Instance.nightCountText.text = "Night " + nightCount;
                 UIController.Instance.shopParent.SetActive(false);
                 monsterSpawner.StartRound();
                 break;

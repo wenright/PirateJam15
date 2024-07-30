@@ -15,6 +15,7 @@ public class SpellData : ScriptableObject
     [Header("Basics")]
     public string displayName;
     public string description;
+    public Sprite icon;
     
     public WeaponType weaponType = WeaponType.Projectile;
     

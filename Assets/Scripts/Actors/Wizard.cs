@@ -104,11 +104,10 @@ public class Wizard : MonoBehaviour
             textInstance.GetComponent<DamageText>().text.text = "LVL " + level;
             textInstance.GetComponent<DamageText>().startPos = transform.position + Vector3.up * 1.0f;
             textInstance.GetComponent<DamageText>().RefreshText(false);
-
-            levelUpIcon.enabled = true;
-
+            
             if (level % 5 == 0)
             {
+                levelUpIcon.enabled = true;
                 pendingUpgrades++;
             }
         }
@@ -116,6 +115,7 @@ public class Wizard : MonoBehaviour
 
     private void OnMouseUp()
     {
+        Debug.Log(pendingUpgrades);
         if (pendingUpgrades > 0)
         {
             UIController.Instance.ShowWizardUpgrade(this);

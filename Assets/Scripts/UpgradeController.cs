@@ -45,7 +45,10 @@ public class UpgradeController : MonoBehaviour
 
         if (upgradeData.upgradeType == UpgradeData.UpgradeType.AddWizard)
         {
-            WizardSpawner.Instance.SpawnWizard();
+            WizardSpawner.Instance.SpawnWizard(upgradeData.newWizardSpell);
+        } else if (upgradeData.upgradeType == UpgradeData.UpgradeType.Heal)
+        {
+            Camp.Instance.Heal(upgradeData.value);
         }
     }
 

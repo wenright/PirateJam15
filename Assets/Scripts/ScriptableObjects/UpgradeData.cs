@@ -37,6 +37,7 @@ public class UpgradeData : ScriptableObject
         IncreasedXp,
         TurnSpeed,
         AddWizard,
+        Heal,
     }
     public UpgradeType upgradeType;
 

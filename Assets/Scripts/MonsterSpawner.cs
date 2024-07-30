@@ -23,10 +23,11 @@ public class MonsterSpawner : MonoBehaviour
             Instantiate(monsterPrefab, Random.insideUnitCircle.normalized * spawnDistance, Quaternion.identity, transform);
             yield return new WaitForSeconds(roundLengthSeconds / numCreaturesToSpawn);
         }
-
-        numCreaturesToSpawn *= difficultyScaling;
         
-        // TODO increase difficulty here?
+        yield return new WaitForSeconds(1.5f);
+        
+        numCreaturesToSpawn *= difficultyScaling;
+        // TODO spawn new enemies each night?
         doneSpawning = true;
     }
 

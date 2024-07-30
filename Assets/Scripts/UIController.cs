@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     public TMP_Text wizardInfoDPSText;
     public GameObject wizardUpgradeCanvas;
     public Button wizardUpgradeCloseButton;
+    public TMP_Text nightCountText;
 
     [ReadOnly] public Wizard selectedWizard;
 

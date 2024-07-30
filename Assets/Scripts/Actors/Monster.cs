@@ -42,6 +42,7 @@ public class Monster : MonoBehaviour
     private void Attack()
     {
         lastAttackTimeSeconds = Time.time;
-        Debug.Log("Attacking tower for " + attackDamage + " damage");
+
+        Camp.Instance.Damage(attackDamage);
     }
 }

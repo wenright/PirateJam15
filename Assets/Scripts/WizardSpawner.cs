@@ -7,6 +7,7 @@ public class WizardSpawner : MonoBehaviour
     
     public List<Wizard> wizards = new();
     public GameObject wizardPrefab;
+    public SpellData defaultSpell;
 
     private void Awake()
     {
@@ -15,13 +16,14 @@ public class WizardSpawner : MonoBehaviour
     
     private void Start()
     {
-        SpawnWizard();
+        SpawnWizard(defaultSpell);
     }
 
-    public void SpawnWizard()
+    public void SpawnWizard(SpellData spellData)
     {
         GameObject wizardInstance = Instantiate(wizardPrefab, transform.position, Quaternion.identity, transform);
         Wizard wizard = wizardInstance.GetComponent<Wizard>();
+        wizard.spellData = spellData;
         wizards.Add(wizard);
     }
 }
