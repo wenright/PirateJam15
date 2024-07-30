@@ -11,7 +11,10 @@ public class UpgradeController : MonoBehaviour
 
     public GameObject shopUpgradeCardPrefab;
     public Button leaveShopButton; 
-    public Button rerollShopButton; // TODO 
+    public Button rerollShopButton;
+    public int defaultRerollCost = 3;
+    public int rerollCost;
+    public int rerollCostIncrement = 1;
 
     private int gold;
     
@@ -23,9 +26,12 @@ public class UpgradeController : MonoBehaviour
     private void Start()
     {
         possibleUpgrades.AddRange(Resources.LoadAll<UpgradeData>("Data/Upgrades"));
+
+        rerollCost = defaultRerollCost;
         RefreshShop();
         
         leaveShopButton.onClick.AddListener(LeaveShop);
+        rerollShopButton.onClick.AddListener(RerollShop);
     }
 
     public void AddGold(int amount)
@@ -43,12 +49,14 @@ public class UpgradeController : MonoBehaviour
     {
         ownedUpgrades.Add(upgradeData);
 
-        if (upgradeData.upgradeType == UpgradeData.UpgradeType.AddWizard)
+        switch (upgradeData.upgradeType)
         {
-            WizardSpawner.Instance.SpawnWizard(upgradeData.newWizardSpell);
-        } else if (upgradeData.upgradeType == UpgradeData.UpgradeType.Heal)
-        {
-            Camp.Instance.Heal(upgradeData.value);
+            case UpgradeData.UpgradeType.AddWizard:
+                WizardSpawner.Instance.SpawnWizard(upgradeData.newWizardSpell);
+                break;
+            case UpgradeData.UpgradeType.Heal:
+                Camp.Instance.Heal(upgradeData.value);
+                break;
         }
     }
 
@@ -71,5 +79,19 @@ public class UpgradeController : MonoBehaviour
     private void LeaveShop()
     {
         GameController.Instance.SwitchState(GameController.State.NIGHTTIME);   
+    }
+
+    private void RerollShop()
+    {
+        if (rerollCost > gold)
+        {
+            Debug.LogWarning("Tried to reroll without enough money");
+        }
+        else
+        {
+            AddGold(rerollCost);
+            RefreshShop();
+            rerollCost += rerollCostIncrement;
+        }
     }
 }

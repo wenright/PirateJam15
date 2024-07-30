@@ -95,9 +95,6 @@ public class Wizard : MonoBehaviour
         {
             level++;
             xpNeeded = Utils.GetXpNeeded(level+1);
-
-            // TODO Show level up upgrades
-            Debug.Log("Ding!", gameObject);
             
             // Hijacking damage text prefab to show level up
             GameObject textInstance = Instantiate(damageTextPrefab, transform.position, Quaternion.identity, transform);
@@ -107,15 +104,15 @@ public class Wizard : MonoBehaviour
             
             if (level % 5 == 0)
             {
-                levelUpIcon.enabled = true;
-                pendingUpgrades++;
+                // TODO come back to this. Might not have time to do upgrading.
+                // levelUpIcon.enabled = true;
+                // pendingUpgrades++;
             }
         }
     }
 
     private void OnMouseUp()
     {
-        Debug.Log(pendingUpgrades);
         if (pendingUpgrades > 0)
         {
             UIController.Instance.ShowWizardUpgrade(this);
