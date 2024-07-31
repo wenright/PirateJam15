@@ -157,4 +157,9 @@ public class UpgradeController : MonoBehaviour
             rerollCostText.text = rerollCost.ToString();
         }
     }
+
+    public void RefreshRerollCost()
+    {
+        rerollCost = defaultRerollCost;
+    }
 }

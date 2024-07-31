@@ -59,6 +59,8 @@ public class GameController : MonoBehaviour
                 
                 break;
             case State.HIRING:
+                UpgradeController.Instance.RefreshRerollCost();
+                
                 float interestRate = UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.AddInterest).Sum(u => u.value);
                 if (interestRate > 0)
                 {
@@ -70,6 +72,8 @@ public class GameController : MonoBehaviour
 
                 break;
             case State.SHOPPING:
+                UpgradeController.Instance.RefreshRerollCost();
+
                 UpgradeController.Instance.RefreshShop();
                 
                 break;
