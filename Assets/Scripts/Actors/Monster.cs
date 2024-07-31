@@ -8,9 +8,9 @@ public class Monster : MonoBehaviour
     private Vector3 target = Vector3.zero;
     private float speed = 1.0f;
     private float attackDistance = 1.5f;
-    private float attackDamage = 10.0f;
+    private float attackDamage = 5.0f;
     private float lastAttackTimeSeconds;
-    private float attackDelaySeconds = 0.25f;
+    private float attackDelaySeconds = 1.0f;
     
     private Rigidbody2D rb;
     private StatusEffectController statusEffectController;
@@ -41,7 +41,7 @@ public class Monster : MonoBehaviour
             int iceCount = statusEffectController.statusEffects.Count(e => e.type == Damageable.DamageType.ICE);
             for (int i = 0; i < iceCount; i++)
             {
-                rb.velocity *= 0.85f;
+                rb.velocity *= 0.75f;
             }
         }
         else

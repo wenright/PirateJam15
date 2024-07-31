@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
     {
         if (state == State.NIGHTTIME && monsterSpawner.doneSpawning && monsterSpawner.transform.childCount == 0)
         {
-            GameController.Instance.SwitchState(State.SHOPPING);
+            GameController.Instance.SwitchState(State.HIRING);
         }
     }
     
@@ -76,5 +76,10 @@ public class GameController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void GameOver()
+    {
+        UIController.Instance.gameOver.SetActive(true);
     }
 }

@@ -32,4 +32,19 @@ public class ConsoleCommands : MonoBehaviour
         Debug.Log("Adding " + x + " xp to all wizards");
         WizardSpawner.Instance.wizards.ForEach(w => w.AddXp(x));
     }
+    
+    [ConsoleMethod("reroll", "Rerolls whatever shop you're in")]
+    public static void Reroll()
+    {
+        if (GameController.Instance.state == GameController.State.HIRING)
+        {
+            Debug.Log("Rerolling wizard shop");
+            UpgradeController.Instance.RefreshWizardShop();
+        }
+        else
+        {
+            Debug.Log("Rerolling shop");
+            UpgradeController.Instance.RefreshShop();
+        }
+    }
 }

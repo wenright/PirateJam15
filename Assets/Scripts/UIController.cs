@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -14,14 +15,32 @@ public class UIController : MonoBehaviour
     public TMP_Text wizardInfoLevelText;
     public TMP_Text wizardInfoDPSText;
     public TMP_Text nightCountText;
+    public GameObject gameOver;
+    public Button retryButton;
+    public Button exitButton1; // Game over
+    public Button exitButton2; // Menu
+    public GameObject escapeMenu;
+    public TMP_Text upgradeList;
 
     private void Awake()
     {
         Instance = this;
     }
 
+    private void Start()
+    {
+        retryButton.onClick.AddListener(Retry);
+        exitButton1.onClick.AddListener(Exit);
+        exitButton2.onClick.AddListener(Exit);
+    }
+
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            escapeMenu.SetActive(!escapeMenu.activeSelf);
+        }
+        
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, 1, ~LayerMask.NameToLayer("Wizard"));
         
@@ -49,5 +68,15 @@ public class UIController : MonoBehaviour
         {
             wizardInfoCanvas.SetActive(false);
         }
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene("Scenes/Game");
     }
 }

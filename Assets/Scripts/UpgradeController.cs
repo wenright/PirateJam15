@@ -13,12 +13,13 @@ public class UpgradeController : MonoBehaviour
     public List<SpellData> possibleSpells = new();
 
     public GameObject shopUpgradeCardPrefab;
+    public TMP_Text shopTitle;
     public Button leaveShopButton; 
     public Button rerollShopButton;
     public TMP_Text rerollCostText;
     public int defaultRerollCost = 3;
     public int rerollCost;
-    public int rerollCostIncrement = 1;
+    public int rerollCostIncrement = 2;
 
     private int gold;
     
@@ -37,8 +38,6 @@ public class UpgradeController : MonoBehaviour
         
         leaveShopButton.onClick.AddListener(LeaveShop);
         rerollShopButton.onClick.AddListener(RerollShop);
-        
-        AddGold(20);
     }
 
     public void AddGold(int amount)
@@ -65,24 +64,45 @@ public class UpgradeController : MonoBehaviour
                 Camp.Instance.Heal(upgradeData.value);
                 break;
         }
+        
+        // add upgrades to escape menu
+        if (upgradeData.upgradeType != UpgradeData.UpgradeType.Heal && upgradeData.upgradeType != UpgradeData.UpgradeType.AddWizard)
+        {
+            UIController.Instance.upgradeList.text += "\n" + upgradeData.displayName;
+        }
     }
 
     public void RefreshWizardShop()
     {
         ClearShop();
+
+        shopTitle.text = "Hire a wizard";
         
         int numWizardsInShop = 3;
+        List<SpellData> previousSpells = new List<SpellData>();
         for (int i = 0; i < numWizardsInShop; i++)
         {
             GameObject cardInstance = Instantiate(shopUpgradeCardPrefab, UIController.Instance.shopUpgradeCardParent);
-            wizardUpgradeData.newWizardSpell = possibleSpells[Random.Range(0, possibleSpells.Count)];
-            cardInstance.GetComponent<UpgradeCard>().SetWizardData(wizardUpgradeData);
+            
+            SpellData randomSpell = possibleSpells[Random.Range(0, possibleSpells.Count)];
+            while (previousSpells.Contains(randomSpell))
+            {
+                randomSpell = possibleSpells[Random.Range(0, possibleSpells.Count)];
+            }
+
+            UpgradeData wizardUpgradeDataInstance = UpgradeData.Instantiate(wizardUpgradeData);
+            wizardUpgradeDataInstance.newWizardSpell = randomSpell;
+            cardInstance.GetComponent<UpgradeCard>().SetWizardData(wizardUpgradeDataInstance);
+            
+            previousSpells.Add(randomSpell);
         }
     }
 
     public void RefreshShop()
     {
         ClearShop();
+
+        shopTitle.text = "Buy upgrades";
         
         int numItemsInShop = 3;
         for (int i = 0; i < numItemsInShop; i++)
@@ -113,6 +133,9 @@ public class UpgradeController : MonoBehaviour
 
     private void ClearShop()
     {
+        rerollShopButton.gameObject.SetActive(GameController.Instance.nightCount != 0);
+        leaveShopButton.gameObject.SetActive(GameController.Instance.nightCount != 0);
+        
         for (int i = UIController.Instance.shopUpgradeCardParent.transform.childCount - 1; i >= 0; i--)
         {
             Destroy(UIController.Instance.shopUpgradeCardParent.transform.GetChild(i).gameObject);

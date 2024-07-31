@@ -39,14 +39,32 @@ public class UpgradeCard : MonoBehaviour
         string text = upgradeData.newWizardSpell.damage + " dmg";
         if (upgradeData.newWizardSpell.numProjectiles > 1)
         {
-            text += "x" + upgradeData.newWizardSpell.numProjectiles;
+            text += " x " + upgradeData.newWizardSpell.numProjectiles;
         }
         if (upgradeData.newWizardSpell.onHitStatusEffects.Count > 0)
         {
             text += "\n+" + upgradeData.newWizardSpell.onHitStatusEffects[0].stacks + " " + upgradeData.newWizardSpell.onHitStatusEffects[0].name + "/s";
+
+            switch (upgradeData.newWizardSpell.onHitStatusEffects[0].type)
+            {
+                case Damageable.DamageType.ICE:
+                    text += "\nslows monsters";
+                    break;
+                case Damageable.DamageType.POISON:
+                    text += " \nweakens monsters";
+                    break;
+            }
         }
         descriptionText.text = text;
-        costText.text = upgradeData.cost + "G";
+
+        if (GameController.Instance.nightCount == 0)
+        {
+            costText.enabled = false;
+        } 
+        else
+        {
+            costText.text = upgradeData.cost + "G";
+        }
     }
     
     private void Buy()
@@ -54,6 +72,14 @@ public class UpgradeCard : MonoBehaviour
         if (!data)
         {
             Debug.LogError("Tried to buy an upgrade before data was intialized", gameObject);
+            return;
+        }
+        
+        // Special case for first wizard
+        if (GameController.Instance.nightCount == 0)
+        {
+            UpgradeController.Instance.AddUpgrade(data);
+            GameController.Instance.SwitchState(GameController.State.NIGHTTIME);
             return;
         }
 

@@ -26,14 +26,15 @@ public class Camp : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("Camp has been destroyed :(");
+            GameController.Instance.GameOver();
         }
 
-        campHPText.text = health.ToString();
+        campHPText.text = Mathf.RoundToInt(health).ToString();
     }
 
     public void Heal(float amount)
     {
         health += amount;
-        campHPText.text = health.ToString();
+        campHPText.text = Mathf.RoundToInt(health).ToString();
     }
 }
