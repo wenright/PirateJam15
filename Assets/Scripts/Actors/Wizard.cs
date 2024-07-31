@@ -70,6 +70,9 @@ public class Wizard : MonoBehaviour
                 SpawnProjectile(angle + multishotSpread);
             }
         }
+
+        transform.rotation = Quaternion.Euler(0, 0, -25f);
+        transform.DORotate(Vector3.zero, 0.3f).SetEase(Ease.OutElastic);
     }
 
     private void SpawnProjectile(float angle)

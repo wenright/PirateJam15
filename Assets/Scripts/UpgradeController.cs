@@ -150,7 +150,7 @@ public class UpgradeController : MonoBehaviour
         }
         else
         {
-            AddGold(rerollCost);
+            AddGold(-rerollCost);
             RefreshShop();
             
             rerollCost += rerollCostIncrement;

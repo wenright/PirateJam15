@@ -22,7 +22,7 @@ MonoBehaviour:
   projectileSprite: {fileID: 21300000, guid: 3835f4113b595449f978c3ad9c8e2f26, type: 3}
   spriteRotation: 45
   numProjectiles: 5
-  multishotSpread: 20
+  multishotSpread: 15
   projectileSpread: 25
   projectileSpeed: 8
   projectileRotationSpeed: 0

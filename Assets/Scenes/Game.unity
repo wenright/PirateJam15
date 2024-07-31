@@ -8980,8 +8980,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'DPS: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2c2ad1309623c4bdd971e8daa8aa7b1a, type: 2}
-  m_sharedMaterial: {fileID: -909034433171303915, guid: 2c2ad1309623c4bdd971e8daa8aa7b1a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7f5938b8d9cb54e6a8c115611001317d, type: 2}
+  m_sharedMaterial: {fileID: -909034433171303915, guid: 7f5938b8d9cb54e6a8c115611001317d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9589,8 +9589,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Magic missile Wizard
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2c2ad1309623c4bdd971e8daa8aa7b1a, type: 2}
-  m_sharedMaterial: {fileID: -909034433171303915, guid: 2c2ad1309623c4bdd971e8daa8aa7b1a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7f5938b8d9cb54e6a8c115611001317d, type: 2}
+  m_sharedMaterial: {fileID: -909034433171303915, guid: 7f5938b8d9cb54e6a8c115611001317d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13079,8 +13079,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: level 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2c2ad1309623c4bdd971e8daa8aa7b1a, type: 2}
-  m_sharedMaterial: {fileID: -909034433171303915, guid: 2c2ad1309623c4bdd971e8daa8aa7b1a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7f5938b8d9cb54e6a8c115611001317d, type: 2}
+  m_sharedMaterial: {fileID: -909034433171303915, guid: 7f5938b8d9cb54e6a8c115611001317d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14072,8 +14072,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2c2ad1309623c4bdd971e8daa8aa7b1a, type: 2}
-  m_sharedMaterial: {fileID: -909034433171303915, guid: 2c2ad1309623c4bdd971e8daa8aa7b1a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7f5938b8d9cb54e6a8c115611001317d, type: 2}
+  m_sharedMaterial: {fileID: -909034433171303915, guid: 7f5938b8d9cb54e6a8c115611001317d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15501,7 +15501,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 16
   m_ScaleFactor: 0.75
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1200, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
