@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: IncreaseAffectedDamage
   m_EditorClassIdentifier: 
   rarity: 2
-  displayName: Grease
-  description: Enemies with status effects take +20% damage
-  cost: 16
-  value: 0.2
-  upgradeType: 11
+  displayName: Weakpoint
+  description: Enemies with status effects take +50% damage
+  cost: 20
+  value: 0.5
+  upgradeType: 10
   newWizardSpell: {fileID: 0}
   elementToIncreaseDamage: 0
   elementToIncreaseStacks: 0

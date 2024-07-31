@@ -9,6 +9,8 @@ public class UpgradeController : MonoBehaviour
     
     public List<UpgradeData> ownedUpgrades = new();
     public List<UpgradeData> possibleUpgrades = new();
+    public UpgradeData wizardUpgradeData;
+    public List<SpellData> possibleSpells = new();
 
     public GameObject shopUpgradeCardPrefab;
     public Button leaveShopButton; 
@@ -23,18 +25,20 @@ public class UpgradeController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        
+        possibleUpgrades.AddRange(Resources.LoadAll<UpgradeData>("Data/Upgrades"));
+        possibleSpells.AddRange(Resources.LoadAll<SpellData>("Data/Spells"));
     }
 
     private void Start()
     {
-        possibleUpgrades.AddRange(Resources.LoadAll<UpgradeData>("Data/Upgrades"));
-
         rerollCost = defaultRerollCost;
         rerollCostText.text = rerollCost.ToString();
-        RefreshShop();
         
         leaveShopButton.onClick.AddListener(LeaveShop);
         rerollShopButton.onClick.AddListener(RerollShop);
+        
+        AddGold(20);
     }
 
     public void AddGold(int amount)
@@ -63,25 +67,56 @@ public class UpgradeController : MonoBehaviour
         }
     }
 
+    public void RefreshWizardShop()
+    {
+        ClearShop();
+        
+        int numWizardsInShop = 3;
+        for (int i = 0; i < numWizardsInShop; i++)
+        {
+            GameObject cardInstance = Instantiate(shopUpgradeCardPrefab, UIController.Instance.shopUpgradeCardParent);
+            wizardUpgradeData.newWizardSpell = possibleSpells[Random.Range(0, possibleSpells.Count)];
+            cardInstance.GetComponent<UpgradeCard>().SetWizardData(wizardUpgradeData);
+        }
+    }
+
     public void RefreshShop()
     {
-        for (int i = UIController.Instance.shopUpgradeCardParent.transform.childCount - 1; i >= 0; i--)
-        {
-            Destroy(UIController.Instance.shopUpgradeCardParent.transform.GetChild(i).gameObject);
-        }
+        ClearShop();
         
         int numItemsInShop = 3;
         for (int i = 0; i < numItemsInShop; i++)
         {
             GameObject cardInstance = Instantiate(shopUpgradeCardPrefab, UIController.Instance.shopUpgradeCardParent);
             cardInstance.GetComponent<UpgradeCard>().SetData(possibleUpgrades[Random.Range(0, possibleUpgrades.Count)]);
-            // TODO do I need to refresh UI to get horizontal scroll thing to work
         }
     }
 
     private void LeaveShop()
     {
-        GameController.Instance.SwitchState(GameController.State.NIGHTTIME);   
+        if (GameController.Instance.nightCount == 0)
+        {
+            GameController.Instance.SwitchState(GameController.State.NIGHTTIME);   
+        }
+        else
+        {
+            if (GameController.Instance.state == GameController.State.HIRING)
+            {
+                GameController.Instance.SwitchState(GameController.State.SHOPPING);   
+            }
+            else
+            {
+                GameController.Instance.SwitchState(GameController.State.NIGHTTIME);   
+            }
+        }
+    }
+
+    private void ClearShop()
+    {
+        for (int i = UIController.Instance.shopUpgradeCardParent.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(UIController.Instance.shopUpgradeCardParent.transform.GetChild(i).gameObject);
+        }
     }
 
     private void RerollShop()

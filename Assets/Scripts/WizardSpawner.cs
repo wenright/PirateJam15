@@ -13,11 +13,6 @@ public class WizardSpawner : MonoBehaviour
     {
         Instance = this;
     }
-    
-    private void Start()
-    {
-        SpawnWizard(defaultSpell);
-    }
 
     public void SpawnWizard(SpellData spellData)
     {

@@ -15,9 +15,9 @@ MonoBehaviour:
   rarity: 1
   displayName: '+dmg: poison'
   description: Poison damage ticks for 50% more damage
-  cost: 11
+  cost: 10
   value: 0.5
-  upgradeType: 7
+  upgradeType: 6
   newWizardSpell: {fileID: 0}
   elementToIncreaseDamage: 2
   elementToIncreaseStacks: 0

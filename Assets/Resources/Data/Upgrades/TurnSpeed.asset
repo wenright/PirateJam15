@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b479228ff7ec0423c9bb172784e98b78, type: 3}
   m_Name: TurnSpeed
   m_EditorClassIdentifier: 
-  rarity: 2
+  rarity: 1
   displayName: Grease
   description: Searchlight rotates +20% faster
   cost: 8
   value: 0.2
   upgradeType: 3
+  newWizardSpell: {fileID: 0}
+  elementToIncreaseDamage: 0
+  elementToIncreaseStacks: 0

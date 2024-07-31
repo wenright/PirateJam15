@@ -13,13 +13,9 @@ public enum WeaponType
 public class SpellData : ScriptableObject
 {
     [Header("Basics")]
-    public string displayName;
-    public string description;
-    public Sprite icon;
-    
     public WeaponType weaponType = WeaponType.Projectile;
-    
     public AudioClip attackSound;
+    public int spellLevel = 1;
     
     [Header("Damage")]
     public float damage;
@@ -46,4 +42,5 @@ public class SpellData : ScriptableObject
     public bool piercing = false;
     
     public List<StatusEffectData> onHitStatusEffects;
+    public int numStacks = 1;
 }

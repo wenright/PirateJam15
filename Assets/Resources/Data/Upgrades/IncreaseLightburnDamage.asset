@@ -15,9 +15,9 @@ MonoBehaviour:
   rarity: 1
   displayName: '+dmg: lightburn'
   description: Lightburn damage ticks for 50% more damage
-  cost: 11
+  cost: 15
   value: 0.5
-  upgradeType: 7
+  upgradeType: 6
   newWizardSpell: {fileID: 0}
   elementToIncreaseDamage: 6
   elementToIncreaseStacks: 0

@@ -65,7 +65,7 @@ public class Projectile : MonoBehaviour
             StatusEffectController statusEffectController = damageable.GetComponent<StatusEffectController>();
             if (statusEffectController && spellData.onHitStatusEffects.Count > 0)
             {
-                statusEffectController.AddStatusEffect(spellData.onHitStatusEffects, source);
+                statusEffectController.AddStatusEffect(spellData.onHitStatusEffects, source, spellData.numStacks);
             }
             
             // Hit FX

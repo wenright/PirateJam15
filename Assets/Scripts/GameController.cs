@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
         LOADING,
         AWAITING_START,
         NIGHTTIME,
+        HIRING,
         SHOPPING,
         GAME_OVER
     }
@@ -28,8 +29,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        // TODO Probably should have a start screen
-        SwitchState(State.NIGHTTIME);
+        SwitchState(State.HIRING);
     }
 
     private void Update()
@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
                 monsterSpawner.StartRound();
                 
                 break;
-            case State.SHOPPING:
+            case State.HIRING:
                 float interestRate = UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.AddInterest).Sum(u => u.value);
                 if (interestRate > 0)
                 {
@@ -66,6 +66,10 @@ public class GameController : MonoBehaviour
                 }
                 
                 UIController.Instance.shopParent.SetActive(true);
+                UpgradeController.Instance.RefreshWizardShop();
+
+                break;
+            case State.SHOPPING:
                 UpgradeController.Instance.RefreshShop();
                 
                 break;

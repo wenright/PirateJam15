@@ -15,6 +15,9 @@ MonoBehaviour:
   rarity: 0
   displayName: Thinking Cap
   description: +20% xp gained on all wizards
-  cost: 4
+  cost: 7
   value: 0.2
   upgradeType: 2
+  newWizardSpell: {fileID: 0}
+  elementToIncreaseDamage: 0
+  elementToIncreaseStacks: 0

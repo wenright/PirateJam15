@@ -20,4 +20,4 @@ MonoBehaviour:
   upgradeType: 7
   newWizardSpell: {fileID: 0}
   elementToIncreaseDamage: 4
-  elementToIncreaseStacks: 0
+  elementToIncreaseStacks: 4

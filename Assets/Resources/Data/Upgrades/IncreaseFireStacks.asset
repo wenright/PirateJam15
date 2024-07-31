@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Adds an additional stack for fire damage
   cost: 13
   value: 1
-  upgradeType: 8
+  upgradeType: 7
   newWizardSpell: {fileID: 0}
   elementToIncreaseDamage: 4
   elementToIncreaseStacks: 4

@@ -22,7 +22,7 @@ public class LightSource : MonoBehaviour
 
             if (burnAmount > 0)
             {
-                otherMonster.GetComponent<StatusEffectController>().AddStatusEffect(lightburnStatusEffect, null);
+                otherMonster.GetComponent<StatusEffectController>().AddStatusEffect(lightburnStatusEffect, null, 1);
             }
         }
     }

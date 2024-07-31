@@ -11,6 +11,7 @@ public class UpgradeCard : MonoBehaviour
     public TMP_Text rarityText;
     public TMP_Text descriptionText;
     public TMP_Text costText;
+    public GameObject soldOutText;
 
     private void Start()
     {
@@ -26,6 +27,25 @@ public class UpgradeCard : MonoBehaviour
         rarityText.color = UpgradeData.rarityColors[data.rarity];
         rarityText.text = data.rarity.ToString();
         descriptionText.text = upgradeData.description;
+        costText.text = upgradeData.cost + "G";
+    }
+    
+    public void SetWizardData(UpgradeData upgradeData)
+    {
+        data = upgradeData;
+
+        nameText.text = upgradeData.newWizardSpell.name + " wizard";
+        Destroy(rarityText);
+        string text = upgradeData.newWizardSpell.damage + " dmg";
+        if (upgradeData.newWizardSpell.numProjectiles > 1)
+        {
+            text += "x" + upgradeData.newWizardSpell.numProjectiles;
+        }
+        if (upgradeData.newWizardSpell.onHitStatusEffects.Count > 0)
+        {
+            text += "\n+" + upgradeData.newWizardSpell.onHitStatusEffects[0].stacks + " " + upgradeData.newWizardSpell.onHitStatusEffects[0].name + "/s";
+        }
+        descriptionText.text = text;
         costText.text = upgradeData.cost + "G";
     }
     
@@ -46,5 +66,6 @@ public class UpgradeCard : MonoBehaviour
         UpgradeController.Instance.AddGold(-data.cost);
         UpgradeController.Instance.AddUpgrade(data);
         button.interactable = false;
+        soldOutText.SetActive(true);
     }
 }

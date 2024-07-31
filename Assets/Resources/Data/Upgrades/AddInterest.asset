@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: AddInterest
   m_EditorClassIdentifier: 
   rarity: 1
-  displayName: Investment
+  displayName: Interest
   description: gain +10% of your gold at the end of each night
   cost: 10
   value: 0.1
-  upgradeType: 12
+  upgradeType: 11
   newWizardSpell: {fileID: 0}
   elementToIncreaseDamage: 0
   elementToIncreaseStacks: 0

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92fcd82c79a564c7582049fb220f0bba, type: 3}
+  m_Name: Explosion
+  m_EditorClassIdentifier: 
+  weaponType: 0
+  attackSound: {fileID: 8300000, guid: bc5450b2df2dc554a8b5a2b8dbeb38cb, type: 3}
+  spellLevel: 1
+  damage: 5
+  attackCooldown: 3.5
+  knockback: 10
+  hitParticlePrefab: {fileID: 2158466171030932914, guid: 2859e0d4dd1754495a8643d9598aac6d, type: 3}
+  projectileSprite: {fileID: 21300000, guid: 01a67cb13a678458d976fb2bc6db9366, type: 3}
+  spriteRotation: 45
+  numProjectiles: 1
+  multishotSpread: 10
+  projectileSpread: 20
+  projectileSpeed: 6
+  projectileRotationSpeed: 0
+  burst: 0
+  burstAmount: 1
+  burstRate: 0.1
+  homing: 0
+  homingStrength: 1
+  homingDistance: 3
+  piercing: 0
+  onHitStatusEffects:
+  - {fileID: 11400000, guid: c7f6b55abcf8d4968bf53821351040b9, type: 2}
+  numStacks: 5

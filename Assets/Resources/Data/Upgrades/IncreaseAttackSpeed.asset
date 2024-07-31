@@ -15,9 +15,9 @@ MonoBehaviour:
   rarity: 2
   displayName: Training
   description: Wizards attack 15% faster
-  cost: 9
+  cost: 20
   value: 0.15
-  upgradeType: 10
+  upgradeType: 9
   newWizardSpell: {fileID: 0}
   elementToIncreaseDamage: 0
   elementToIncreaseStacks: 0

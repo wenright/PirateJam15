@@ -32,7 +32,7 @@ public class UIController : MonoBehaviour
             {
                 wizardInfoCanvas.SetActive(true);
                 
-                wizardInfoNameText.text = wiz.spellData.displayName + " wizard";
+                wizardInfoNameText.text = wiz.spellData.name + " wizard";
                 wizardInfoDPSText.text = wiz.GetComponent<DPSTracker>().GetDPS().ToString();
                 wizardInfoLevelText.text = "level " + wiz.level;
                 

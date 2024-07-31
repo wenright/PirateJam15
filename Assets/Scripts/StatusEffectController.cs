@@ -38,15 +38,15 @@ public class StatusEffectController : MonoBehaviour
         }
     }
 
-    internal void AddStatusEffect(List<StatusEffectData> effects, GameObject source)
+    internal void AddStatusEffect(List<StatusEffectData> effects, GameObject source, int numStacks)
     {
         foreach (StatusEffectData effect in effects)
         {
-            AddStatusEffect(effect, source);
+            AddStatusEffect(effect, source, numStacks);
         }
     }
     
-    internal void AddStatusEffect(StatusEffectData effect, GameObject source)
+    internal void AddStatusEffect(StatusEffectData effect, GameObject source, int numStacks)
     {
         if (effect == null)
         {
@@ -55,7 +55,7 @@ public class StatusEffectController : MonoBehaviour
         }
 
         StatusEffectData existingEffect = statusEffects.Find(e => e.name == effect.name);
-        int numStacks = (int) Mathf.Round(1 + UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.IncreaseElementStacks).Sum(u => u.value));
+        numStacks += (int) Mathf.Round(UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.IncreaseElementStacks).Sum(u => u.value));
 
         if (existingEffect != null)
         {

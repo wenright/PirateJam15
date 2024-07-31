@@ -17,7 +17,7 @@ MonoBehaviour:
   description: increase crit chance by 20%
   cost: 15
   value: 0.2
-  upgradeType: 9
+  upgradeType: 8
   newWizardSpell: {fileID: 0}
   elementToIncreaseDamage: 0
   elementToIncreaseStacks: 0

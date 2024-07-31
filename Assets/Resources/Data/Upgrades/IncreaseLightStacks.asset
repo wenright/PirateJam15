@@ -15,9 +15,9 @@ MonoBehaviour:
   rarity: 1
   displayName: '+stacks: Lightburn'
   description: Adds an additional stack for lightburn damage
-  cost: 13
+  cost: 15
   value: 1
-  upgradeType: 8
+  upgradeType: 7
   newWizardSpell: {fileID: 0}
   elementToIncreaseDamage: 4
   elementToIncreaseStacks: 6
