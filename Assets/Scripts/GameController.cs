@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -55,10 +56,18 @@ public class GameController : MonoBehaviour
                 UIController.Instance.nightCountText.text = "Night " + nightCount;
                 UIController.Instance.shopParent.SetActive(false);
                 monsterSpawner.StartRound();
+                
                 break;
             case State.SHOPPING:
+                float interestRate = UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.AddInterest).Sum(u => u.value);
+                if (interestRate > 0)
+                {
+                    UpgradeController.Instance.AddGold((int)(UpgradeController.Instance.GetGold() * interestRate));
+                }
+                
                 UIController.Instance.shopParent.SetActive(true);
                 UpgradeController.Instance.RefreshShop();
+                
                 break;
             default:
                 break;

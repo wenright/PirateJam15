@@ -38,7 +38,6 @@ public class UpgradeData : ScriptableObject
         TurnSpeed,
         AddWizard,
         Heal,
-        IncreaseMaxCampHP,
         IncreaseElementDamage,
         IncreaseElementStacks,
         IncreaseCritChance,

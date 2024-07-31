@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -7,7 +8,7 @@ public class Projectile : MonoBehaviour
     [ReadOnly] public Transform homingTarget;
 
     private GameObject source;
-    private float damageBonus = 1;
+    private float levelDamageBonus = 1;
     
     private Rigidbody2D rb;
     
@@ -26,11 +27,11 @@ public class Projectile : MonoBehaviour
         }
     }
     
-    public void SetData(SpellData data, GameObject owner, float damageBonus)
+    public void SetData(SpellData data, GameObject owner, float levelDamageBonus)
     {
         spellData = data;
         source = owner;
-        this.damageBonus = damageBonus;
+        this.levelDamageBonus = levelDamageBonus;
         
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * data.projectileSpeed;
@@ -44,8 +45,21 @@ public class Projectile : MonoBehaviour
         Damageable damageable = other.GetComponent<Damageable>();
         if (damageable)
         {
+            float critChance = UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.IncreaseCritChance).Sum(u => u.value);
+            float critDamage = 1.0f;
+            if (Random.Range(0.0f, 1.0f) >= critChance)
+            {
+                critDamage = 2.0f;
+            }
+
+            float affectedDamageBonus = 1;
+            if (other.GetComponent<StatusEffectController>().statusEffects.Count > 0)
+            {
+                affectedDamageBonus += UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.IncreaseDamageToImpairedEnemies).Sum(u => u.value);
+            }
+            
             // Deal damage
-            damageable.Damage(spellData.damage * damageBonus, damageable.transform.position, source, Damageable.DamageType.DEFAULT);
+            damageable.Damage(spellData.damage * levelDamageBonus * affectedDamageBonus * critDamage, damageable.transform.position, source, Damageable.DamageType.DEFAULT);
 
             // Add status effects
             StatusEffectController statusEffectController = damageable.GetComponent<StatusEffectController>();

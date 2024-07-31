@@ -36,6 +36,8 @@ public class Wizard : MonoBehaviour
     private void Update()
     {
         float cooldown = spellData.attackCooldown * (Mathf.Lerp(1, 0.25f, Mathf.Pow(level - 1, 1.2f) / 100.0f));
+        float cooldownReduction = UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.IncreaseAttackSpeed).Sum(u => u.value);
+        cooldown = cooldown / (1 + cooldownReduction);
         if (lastFireTime + cooldown < Time.time)
         {
             Fire();
@@ -73,10 +75,10 @@ public class Wizard : MonoBehaviour
 
     private void SpawnProjectile(float angle)
     {
-        float damageBonus = 1 + Mathf.Pow(level - 1, 1.7f) * 0.1f;
+        float levelDamageBonus = 1 + Mathf.Pow(level - 1, 1.7f) * 0.1f;
         float randomSpread = Random.Range(-spellData.projectileSpread / 2, spellData.projectileSpread / 2);
         GameObject projectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.AngleAxis(angle + randomSpread, Vector3.forward), GameController.Instance.projectileParent);
-        projectileInstance.GetComponent<Projectile>().SetData(spellData, gameObject, damageBonus);
+        projectileInstance.GetComponent<Projectile>().SetData(spellData, gameObject, levelDamageBonus);
         
         // Sets the in/out mask sprites
         foreach (SpriteRenderer spriteRenderer in projectileInstance.GetComponentsInChildren<SpriteRenderer>())

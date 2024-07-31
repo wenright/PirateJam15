@@ -15,10 +15,12 @@ public class StatusEffectController : MonoBehaviour
 
         if (tickTimer >= tickInterval)
         {
+            float effectDamageBonus = 1 + UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.IncreaseElementDamage).Sum(u => u.value);
+            
             Damageable damageable = GetComponent<Damageable>();
             foreach (StatusEffectData effect in statusEffects.ToList().Where(effect => effect.type is Damageable.DamageType.FIRE or Damageable.DamageType.BLEED or Damageable.DamageType.POISON or Damageable.DamageType.LIGHT))
             {
-                damageable.Damage(effect.value * effect.stacks, transform.position, effect.source, effect.type);
+                damageable.Damage(effect.value * effect.stacks * effectDamageBonus, transform.position, effect.source, effect.type);
             }
 
             tickTimer -= tickInterval;
@@ -53,12 +55,13 @@ public class StatusEffectController : MonoBehaviour
         }
 
         StatusEffectData existingEffect = statusEffects.Find(e => e.name == effect.name);
+        int numStacks = (int) Mathf.Round(1 + UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.IncreaseElementStacks).Sum(u => u.value));
 
         if (existingEffect != null)
         {
             if (existingEffect.isStackable)
             {
-                existingEffect.stacks++;
+                existingEffect.stacks += numStacks;
             }
 
             existingEffect.duration = effect.duration;
@@ -68,6 +71,7 @@ public class StatusEffectController : MonoBehaviour
             StatusEffectData newEffect = Instantiate(effect);
             newEffect.name = effect.name;
             newEffect.source = source;
+            newEffect.stacks = numStacks; // TODO note that this means anything with a non-one default stack count getes overridden
             statusEffects.Add(newEffect);
         }
     }
