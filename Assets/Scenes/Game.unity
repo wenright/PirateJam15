@@ -8792,7 +8792,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wizard
+  m_text: Magic missile Wizard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2c2ad1309623c4bdd971e8daa8aa7b1a, type: 2}
   m_sharedMaterial: {fileID: -909034433171303915, guid: 2c2ad1309623c4bdd971e8daa8aa7b1a, type: 2}
@@ -8819,10 +8819,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 22.85
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -10225,7 +10225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wizards: []
   wizardPrefab: {fileID: 6972972845598449257, guid: fcf5e10d3caf04a68ba9ae739b9f3a9f, type: 3}
-  defaultSpell: {fileID: 11400000, guid: eb8cbc97700094198a40fdf247151701, type: 2}
+  defaultSpell: {fileID: 11400000, guid: 581939b4aa5144e06ad7acfc343ee33e, type: 2}
 --- !u!1 &1259010277
 GameObject:
   m_ObjectHideFlags: 0

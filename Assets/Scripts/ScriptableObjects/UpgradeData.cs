@@ -38,8 +38,17 @@ public class UpgradeData : ScriptableObject
         TurnSpeed,
         AddWizard,
         Heal,
+        IncreaseMaxCampHP,
+        IncreaseElementDamage,
+        IncreaseElementStacks,
+        IncreaseCritChance,
+        IncreaseAttackSpeed,
+        IncreaseDamageToImpairedEnemies,
+        AddInterest,
     }
     public UpgradeType upgradeType;
 
     [ShowIf("upgradeType", UpgradeType.AddWizard)] public SpellData newWizardSpell;
+    [ShowIf("upgradeType", UpgradeType.IncreaseElementDamage)] public Damageable.DamageType elementToIncreaseDamage;
+    [ShowIf("upgradeType", UpgradeType.IncreaseElementStacks)] public Damageable.DamageType elementToIncreaseStacks;
 }

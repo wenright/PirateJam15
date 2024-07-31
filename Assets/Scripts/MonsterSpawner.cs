@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-    public float numCreaturesToSpawn = 10;
+    public float numCreaturesToSpawn = 6;
     public float spawnDelaySeconds = 2.0f;
     public float spawnDistance = 12.0f;
     public float roundLengthSeconds = 10.0f;

@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Firebolt
   description: Shoot a lil fire
+  icon: {fileID: 0}
   weaponType: 0
   attackSound: {fileID: 8300000, guid: bc5450b2df2dc554a8b5a2b8dbeb38cb, type: 3}
   damage: 2
   attackCooldown: 1
   knockback: 0
   hitParticlePrefab: {fileID: 2158466171030932914, guid: 2859e0d4dd1754495a8643d9598aac6d, type: 3}
-  projectileSprite: {fileID: 354004276, guid: 97da431401d2741cfa8b0bc157f0c0e0, type: 3}
+  projectileSprite: {fileID: 21300000, guid: 21304e9bd56994e8f81c9cbb0774e788, type: 3}
+  spriteRotation: 45
   numProjectiles: 1
   multishotSpread: 10
   projectileSpread: 0

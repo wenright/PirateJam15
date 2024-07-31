@@ -47,10 +47,29 @@ public class Utils : MonoBehaviour
         source.Play();
     }
     
-    
     public static int GetXpNeeded(int level)
     {
         // Copying the runescape formula
         return (int) Mathf.Floor(720 * Mathf.Pow(2, level / 7.0f) + (1 / 8.0f) * level * (level - 1) - 795);
+    }
+    
+    public static Transform FindClosestByTag(Vector3 position, string tag)
+    {
+        float nearestDistance = Mathf.Infinity;
+        Transform nearestTransform = null;
+
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(tag);
+
+        foreach (GameObject gameObject in gameObjects)
+        {
+            float dist = Vector3.Distance(position, gameObject.transform.position);
+            if (gameObject != null && gameObject.gameObject.activeSelf && dist < nearestDistance)
+            {
+                nearestDistance = dist;
+                nearestTransform = gameObject.transform;
+            }
+        }
+
+        return nearestTransform;
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4671034209158707173}
   - component: {fileID: 5444155080398615623}
   - component: {fileID: 5984720969594839192}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7713287162802861455}
   - component: {fileID: 8662033106423237137}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 2434146606340887066}
   - component: {fileID: 2834829665355094735}
   - component: {fileID: 4465822205166909189}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 3810789875294561988}
   m_Layer: 0
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,6 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94c54d194aab4136a522934e879f7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIlluminated: 0
 --- !u!114 &1046867696320429953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7180875261621269807}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +612,7 @@ GameObject:
   - component: {fileID: 4741524138082129819}
   - component: {fileID: 5097746386211283585}
   - component: {fileID: 7131935263943873821}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

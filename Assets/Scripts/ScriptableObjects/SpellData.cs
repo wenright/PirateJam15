@@ -29,6 +29,7 @@ public class SpellData : ScriptableObject
     [Header("Effects")]
     public GameObject hitParticlePrefab;
     public Sprite projectileSprite;
+    public float spriteRotation = 45;
     
     [Header("Projectile data")]
     public int numProjectiles = 1;
@@ -40,7 +41,7 @@ public class SpellData : ScriptableObject
     [ShowIf("burst", true)] public int burstAmount = 1;
     [ShowIf("burst", true)] public float burstRate = 0.1f;
     public bool homing = false;
-    [ShowIf("homing", true), Tooltip("How quickly the projectile will turn towards the target")] public float homingStrength = 1.0f;
+    [ShowIf("homing", true), Tooltip("How quickly the projectile will turn towards the target")] public float homingStrength = 100.0f;
     [ShowIf("homing", true)] public float homingDistance = 3.0f;
     public bool piercing = false;
     

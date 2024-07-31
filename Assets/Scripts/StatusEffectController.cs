@@ -16,7 +16,7 @@ public class StatusEffectController : MonoBehaviour
         if (tickTimer >= tickInterval)
         {
             Damageable damageable = GetComponent<Damageable>();
-            foreach (StatusEffectData effect in statusEffects.ToList())
+            foreach (StatusEffectData effect in statusEffects.ToList().Where(effect => effect.type is Damageable.DamageType.FIRE or Damageable.DamageType.BLEED or Damageable.DamageType.POISON or Damageable.DamageType.LIGHT))
             {
                 damageable.Damage(effect.value * effect.stacks, transform.position, effect.source, effect.type);
             }
