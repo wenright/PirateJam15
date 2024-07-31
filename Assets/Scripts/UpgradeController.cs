@@ -75,8 +75,8 @@ public class UpgradeController : MonoBehaviour
     public void RefreshWizardShop()
     {
         ClearShop();
-
-        shopTitle.text = "Hire a wizard";
+        
+        shopTitle.text = GameController.Instance.nightCount == 0 ? "Pick a sarting wizard" : "Hire a wizard";
         
         int numWizardsInShop = 3;
         List<SpellData> previousSpells = new List<SpellData>();

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fire Bolt
   m_EditorClassIdentifier: 
   weaponType: 0
-  attackSound: {fileID: 8300000, guid: bc5450b2df2dc554a8b5a2b8dbeb38cb, type: 3}
+  attackSound: {fileID: 8300000, guid: bff87c2f45759e24eae4ca0fa3ded89c, type: 3}
   spellLevel: 1
   damage: 2
   attackCooldown: 1

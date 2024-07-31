@@ -13,11 +13,11 @@ public class DamageText : MonoBehaviour
 
     private readonly Dictionary<Damageable.DamageType, Color> damageTypeToColor = new()
     {
-        { Damageable.DamageType.DEFAULT, new Color(49/255.0f, 44/255.0f, 58/255.0f) },
-        { Damageable.DamageType.CRIT, new Color(218/255.0f, 65/255.0f, 103/255.0f) },
-        { Damageable.DamageType.FIRE, new Color(255/255.0f, 65/255.0f, 103/255.0f) },
-        { Damageable.DamageType.POISON, new Color(97/255.0f, 231/255.0f, 134/255.0f) },
-        { Damageable.DamageType.ICE, new Color(32/255.0f, 164/255.0f, 243/255.0f) },
+        { Damageable.DamageType.DEFAULT, new Color(229/255.0f, 206/255.0f, 180/255.0f) },
+        { Damageable.DamageType.CRIT, new Color(207/255.0f, 138/255.0f, 203/255.0f) },
+        { Damageable.DamageType.FIRE, new Color(180/255.0f, 82/255.0f, 82/255.0f) },
+        { Damageable.DamageType.POISON, new Color(136/255.0f, 176/255.0f, 96/255.0f) },
+        { Damageable.DamageType.ICE, new Color(104/255.0f, 194/255.0f, 211/255.0f) },
     };
 
     private float startHeight = 1.0f;

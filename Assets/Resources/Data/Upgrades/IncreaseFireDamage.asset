@@ -15,7 +15,7 @@ MonoBehaviour:
   rarity: 1
   displayName: '+dmg: fire'
   description: Fire damage ticks for 50% more damage
-  cost: 11
+  cost: 10
   value: 0.5
   upgradeType: 7
   newWizardSpell: {fileID: 0}

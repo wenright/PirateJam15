@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour
         {
             float critChance = UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.IncreaseCritChance).Sum(u => u.value);
             float critDamage = 1.0f;
-            if (Random.Range(0.0f, 1.0f) >= critChance)
+            if (Random.Range(0.0f, 1.0f) <= critChance)
             {
                 critDamage = 2.0f;
             }

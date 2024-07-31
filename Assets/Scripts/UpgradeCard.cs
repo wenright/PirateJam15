@@ -12,6 +12,7 @@ public class UpgradeCard : MonoBehaviour
     public TMP_Text descriptionText;
     public TMP_Text costText;
     public GameObject soldOutText;
+    public AudioClip interactSound;
 
     private void Start()
     {
@@ -80,6 +81,7 @@ public class UpgradeCard : MonoBehaviour
         {
             UpgradeController.Instance.AddUpgrade(data);
             GameController.Instance.SwitchState(GameController.State.NIGHTTIME);
+            Utils.PlayOneShot(interactSound, transform.position);
             return;
         }
 
@@ -93,5 +95,6 @@ public class UpgradeCard : MonoBehaviour
         UpgradeController.Instance.AddUpgrade(data);
         button.interactable = false;
         soldOutText.SetActive(true);
+        Utils.PlayOneShot(interactSound, transform.position);
     }
 }

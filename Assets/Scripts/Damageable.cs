@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Damageable : MonoBehaviour
@@ -6,6 +7,8 @@ public class Damageable : MonoBehaviour
     public int moneyGiven = 2;
     public int xpGiven = 8;
     [ReadOnly] public float health = 0;
+    public SpriteRenderer spriteToFlash;
+    [ReadOnly] public Color ogSpriteColor;
     private GameObject damageTextPrefab;
     
     public enum DamageType
@@ -21,9 +24,11 @@ public class Damageable : MonoBehaviour
 
     private void Start()
     {
+        maxHealth *= Mathf.Pow(GameController.Instance.nightCount, MonsterSpawner.difficultyScaling);
         health = maxHealth;
         
         damageTextPrefab = Resources.Load<GameObject>("DamageText");
+        ogSpriteColor = spriteToFlash.color;
     }
 
     public void Damage(float damage, Vector2 position, GameObject source, DamageType damageType)
@@ -48,6 +53,12 @@ public class Damageable : MonoBehaviour
 
             // TODO death effect
             Destroy(gameObject);
+        }
+
+        if (damageType == DamageType.DEFAULT && spriteToFlash)
+        {
+            spriteToFlash.color = Color.white;
+            spriteToFlash.DOColor(ogSpriteColor, 0.3f).SetEase(Ease.OutQuad);
         }
     }
 

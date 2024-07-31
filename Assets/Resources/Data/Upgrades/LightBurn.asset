@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b479228ff7ec0423c9bb172784e98b78, type: 3}
   m_Name: LightBurn
   m_EditorClassIdentifier: 
-  rarity: 1
+  rarity: 4
   displayName: Light Burn
   description: Damages all illuminated monsters
-  cost: 12
+  cost: 15
   value: 1
   upgradeType: 1
+  newWizardSpell: {fileID: 0}
+  elementToIncreaseDamage: 0
+  elementToIncreaseStacks: 0

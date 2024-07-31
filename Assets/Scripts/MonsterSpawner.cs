@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-    public float numCreaturesToSpawn = 6;
+    public float numCreaturesToSpawn = 4;
     public float spawnDelaySeconds = 2.0f;
     public float spawnDistance = 12.0f;
     public float roundLengthSeconds = 10.0f;
-    public float difficultyScaling = 1.2f;
+    public static float difficultyScaling = 1.15f;
     public bool doneSpawning;
 
     public GameObject monsterPrefab;

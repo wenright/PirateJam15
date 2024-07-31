@@ -23,7 +23,7 @@ MonoBehaviour:
   spriteRotation: 45
   numProjectiles: 1
   multishotSpread: 10
-  projectileSpread: 20
+  projectileSpread: 2
   projectileSpeed: 6
   projectileRotationSpeed: 0
   burst: 0

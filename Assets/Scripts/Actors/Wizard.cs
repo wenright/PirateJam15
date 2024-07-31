@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Linq;
 using DG.Tweening;
@@ -38,7 +37,7 @@ public class Wizard : MonoBehaviour
         float cooldown = spellData.attackCooldown * (Mathf.Lerp(1, 0.25f, Mathf.Pow(level - 1, 1.2f) / 100.0f));
         float cooldownReduction = UpgradeController.Instance.ownedUpgrades.Where(u => u.upgradeType == UpgradeData.UpgradeType.IncreaseAttackSpeed).Sum(u => u.value);
         cooldown = cooldown / (1 + cooldownReduction);
-        if (lastFireTime + cooldown < Time.time)
+        if (lastFireTime + cooldown < Time.time && Camp.Instance.health > 0)
         {
             Fire();
         }
@@ -117,7 +116,7 @@ public class Wizard : MonoBehaviour
 
     private IEnumerator Wander()
     {
-        while (true)
+        while (Camp.Instance.health > 0)
         {
             yield return new WaitForSeconds(wanderIntervalSeconds + Random.Range(0.0f, 1.0f));
             transform.DOMove(Random.insideUnitCircle * wanderRadius, wanderSpeed).SetEase(Ease.Linear);

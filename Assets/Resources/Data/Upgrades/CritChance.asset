@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b479228ff7ec0423c9bb172784e98b78, type: 3}
   m_Name: CritChance
   m_EditorClassIdentifier: 
-  rarity: 2
+  rarity: 3
   displayName: +Crit
   description: increase crit chance by 20%
   cost: 15

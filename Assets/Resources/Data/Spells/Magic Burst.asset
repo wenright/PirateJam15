@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Magic Burst
   m_EditorClassIdentifier: 
   weaponType: 0
-  attackSound: {fileID: 8300000, guid: bc5450b2df2dc554a8b5a2b8dbeb38cb, type: 3}
+  attackSound: {fileID: 8300000, guid: cc1c12d5a08ab444cab5921997c1f731, type: 3}
   spellLevel: 1
   damage: 7
-  attackCooldown: 2
+  attackCooldown: 1.75
   knockback: 0
   hitParticlePrefab: {fileID: 2158466171030932914, guid: 2859e0d4dd1754495a8643d9598aac6d, type: 3}
   projectileSprite: {fileID: 21300000, guid: 3ff4b6654fb44492cafde0049295da70, type: 3}

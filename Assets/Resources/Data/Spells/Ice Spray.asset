@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponType: 0
   attackSound: {fileID: 8300000, guid: bc5450b2df2dc554a8b5a2b8dbeb38cb, type: 3}
   spellLevel: 1
-  damage: 2
+  damage: 4
   attackCooldown: 1.5
   knockback: 0
   hitParticlePrefab: {fileID: 2158466171030932914, guid: 2859e0d4dd1754495a8643d9598aac6d, type: 3}

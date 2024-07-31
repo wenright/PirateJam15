@@ -15,7 +15,7 @@ MonoBehaviour:
   rarity: 1
   displayName: '+stacks: ice'
   description: Adds an additional stack for ice damage
-  cost: 13
+  cost: 10
   value: 1
   upgradeType: 7
   newWizardSpell: {fileID: 0}

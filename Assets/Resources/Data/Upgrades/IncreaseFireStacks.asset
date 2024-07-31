@@ -15,7 +15,7 @@ MonoBehaviour:
   rarity: 1
   displayName: '+stacks: fire'
   description: Adds an additional stack for fire damage
-  cost: 13
+  cost: 10
   value: 1
   upgradeType: 7
   newWizardSpell: {fileID: 0}

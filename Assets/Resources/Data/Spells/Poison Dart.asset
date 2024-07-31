@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Poison Dart
   m_EditorClassIdentifier: 
   weaponType: 0
-  attackSound: {fileID: 8300000, guid: bc5450b2df2dc554a8b5a2b8dbeb38cb, type: 3}
+  attackSound: {fileID: 8300000, guid: b3d930c0fda9fff46878263cc7139b8f, type: 3}
   spellLevel: 1
   damage: 1.5
   attackCooldown: 1.15

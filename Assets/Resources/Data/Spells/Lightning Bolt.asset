@@ -12,13 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fcd82c79a564c7582049fb220f0bba, type: 3}
   m_Name: Lightning Bolt
   m_EditorClassIdentifier: 
-  displayName: Lightning Bolt
-  description: 'Fast moving '
-  icon: {fileID: 0}
   weaponType: 0
   attackSound: {fileID: 8300000, guid: bc5450b2df2dc554a8b5a2b8dbeb38cb, type: 3}
+  spellLevel: 1
   damage: 2
-  attackCooldown: 0.79
+  attackCooldown: 0.7
   knockback: 0
   hitParticlePrefab: {fileID: 2158466171030932914, guid: 2859e0d4dd1754495a8643d9598aac6d, type: 3}
   projectileSprite: {fileID: 21300000, guid: b4436724454e54177abce537ae23a5fb, type: 3}
@@ -37,3 +35,4 @@ MonoBehaviour:
   piercing: 1
   onHitStatusEffects:
   - {fileID: 11400000, guid: c7f6b55abcf8d4968bf53821351040b9, type: 2}
+  numStacks: 1

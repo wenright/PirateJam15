@@ -311,6 +311,7 @@ MonoBehaviour:
   descriptionText: {fileID: 469539928424962953}
   costText: {fileID: 4074604610829894468}
   soldOutText: {fileID: 638604731799696515}
+  interactSound: {fileID: 8300000, guid: 6fd5a9d74e030d443b01c03edcfc28bf, type: 3}
 --- !u!1 &3414970727558794938
 GameObject:
   m_ObjectHideFlags: 0

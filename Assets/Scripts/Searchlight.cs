@@ -19,7 +19,7 @@ public class Searchlight : MonoBehaviour
 
     private void Update()
     {
-        if (GameController.Instance.state != GameController.State.NIGHTTIME) return;
+        if (GameController.Instance.state != GameController.State.NIGHTTIME || Camp.Instance.health <= 0) return;
         
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         

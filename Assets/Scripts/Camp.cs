@@ -1,5 +1,7 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Camp : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class Camp : MonoBehaviour
     public float health = 100;
     
     public TMP_Text campHPText;
+    public Image hurtFlash;
 
     private void Awake()
     {
@@ -30,6 +33,9 @@ public class Camp : MonoBehaviour
         }
 
         campHPText.text = Mathf.RoundToInt(health).ToString();
+        
+        hurtFlash.DOFade(0.15f, 0f);
+        hurtFlash.DOFade(0, 0.3f);
     }
 
     public void Heal(float amount)

@@ -1,9 +1,11 @@
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
     public bool isIlluminated;
+    public AudioClip attackSound;
     
     private Vector3 target = Vector3.zero;
     private float speed = 1.0f;
@@ -19,6 +21,16 @@ public class Monster : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         statusEffectController = GetComponent<StatusEffectController>();
+
+        // TODO this is cool, but makes the eyes offset for 1/2 the monsters
+        // if (transform.position.x < 0)
+        // {
+        //     foreach (SpriteRenderer child in GetComponentsInChildren<SpriteRenderer>())
+        //     {
+        //         child.flipX = true;
+        //     }
+        //         
+        // }
     }
 
     private void Update()
@@ -48,7 +60,7 @@ public class Monster : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
 
-            if (lastAttackTimeSeconds + attackDelaySeconds <= Time.time)
+            if (lastAttackTimeSeconds + attackDelaySeconds <= Time.time && Camp.Instance.health > 0)
             {
                 Attack();
             }
@@ -58,13 +70,22 @@ public class Monster : MonoBehaviour
     private void Attack()
     {
         lastAttackTimeSeconds = Time.time;
+
+        int sign = (int)Mathf.Sign(transform.position.x);
         
-        int poisonCount = statusEffectController.statusEffects.Count(e => e.type == Damageable.DamageType.POISON);
-        float damage = attackDamage;
-        for (int i = 0; i < poisonCount; i++)
+        transform.DORotate(new Vector3(0, 0, -25 * sign), 0.5f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            damage *= 0.85f;
-        }
-        Camp.Instance.Damage(damage);
+            Utils.PlayOneShot(attackSound, transform.position);
+            
+            int poisonCount = statusEffectController.statusEffects.Count(e => e.type == Damageable.DamageType.POISON);
+            float damage = attackDamage;
+            for (int i = 0; i < poisonCount; i++)
+            {
+                damage *= 0.85f;
+            }
+            Camp.Instance.Damage(damage);
+            
+            transform.DORotate(Vector3.zero, 0.3f).SetEase(Ease.OutElastic);
+        });
     }
 }

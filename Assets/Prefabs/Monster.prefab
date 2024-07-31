@@ -354,6 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isIlluminated: 0
+  attackSound: {fileID: 8300000, guid: ee641e180331d184f86fef15d9593220, type: 3}
 --- !u!114 &1046867696320429953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,9 +368,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  moneyGiven: 2
+  moneyGiven: 4
   xpGiven: 8
   health: 0
+  spriteToFlash: {fileID: 6388554879613165247}
+  ogSpriteColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &4946232639241903147
 MonoBehaviour:
   m_ObjectHideFlags: 0

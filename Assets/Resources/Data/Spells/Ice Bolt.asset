@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Ice Bolt
   m_EditorClassIdentifier: 
   weaponType: 0
-  attackSound: {fileID: 8300000, guid: bc5450b2df2dc554a8b5a2b8dbeb38cb, type: 3}
+  attackSound: {fileID: 8300000, guid: 83f1cbd13756edb4eb866c846d58c86b, type: 3}
   spellLevel: 1
-  damage: 4
+  damage: 5
   attackCooldown: 1.25
   knockback: 0
   hitParticlePrefab: {fileID: 2158466171030932914, guid: 2859e0d4dd1754495a8643d9598aac6d, type: 3}
@@ -32,7 +32,7 @@ MonoBehaviour:
   homing: 0
   homingStrength: 0
   homingDistance: 1
-  piercing: 0
+  piercing: 1
   onHitStatusEffects:
   - {fileID: 11400000, guid: b1c90f3002b4145428c363641f2c1d35, type: 2}
   numStacks: 1
