@@ -9,19 +9,19 @@ public class UpgradeData : ScriptableObject
     public static Dictionary<Rarity, Color> rarityColors = new Dictionary<Rarity, Color>()
     {
         {
-            Rarity.Common, Color.white
+            Rarity.Common, new Color(184/255.0f, 181/255.0f, 185/255.0f)
         },
         {
-            Rarity.Uncommon, Color.green
+            Rarity.Uncommon, new Color(194/255.0f, 211/255.0f, 104/255.0f)
         },
         {
-            Rarity.Rare, Color.blue
+            Rarity.Rare, new Color(75/255.0f, 128/255.0f, 202/255.0f)
         },
         {
-            Rarity.Epic, new Color(0.75f, 0, 1)
+            Rarity.Epic, new Color(180/255.0f, 82/255.0f, 82/255.0f)
         },
         {
-            Rarity.Legendary, new Color(1, 0.5f, 0)
+            Rarity.Legendary, new Color(207/255.0f, 138/255.0f, 203/255.0f)
         }
     };
 

@@ -8,6 +8,7 @@ public class UpgradeCard : MonoBehaviour
     private Button button;
 
     public TMP_Text nameText;
+    public TMP_Text rarityText;
     public TMP_Text descriptionText;
     public TMP_Text costText;
 
@@ -22,6 +23,8 @@ public class UpgradeCard : MonoBehaviour
         data = upgradeData;
 
         nameText.text = upgradeData.displayName;
+        rarityText.color = UpgradeData.rarityColors[data.rarity];
+        rarityText.text = data.rarity.ToString();
         descriptionText.text = upgradeData.description;
         costText.text = upgradeData.cost + "G";
     }
